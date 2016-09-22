@@ -10,6 +10,17 @@ import UIKit
 
 class HeadCell: UITableViewCell {
 
+    
+    
+    @IBOutlet weak var contentCountL: UILabel!
+ 
+   
+    @IBOutlet weak var imgView: UIImageView!
+    
+    
+    @IBOutlet weak var sourceNameL: UILabel!
+    
+    @IBOutlet weak var titleL: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

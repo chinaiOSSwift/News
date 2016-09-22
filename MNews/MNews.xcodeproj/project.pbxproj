@@ -77,6 +77,8 @@
 		BCBA83091D92D5F5008D6044 /* MyScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA83081D92D5F5008D6044 /* MyScrollView.swift */; };
 		BCC106B71D93A62200399353 /* HeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC106B51D93A62200399353 /* HeadCell.swift */; };
 		BCC106B81D93A62200399353 /* HeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCC106B61D93A62200399353 /* HeadCell.xib */; };
+		BCC106BA1D93DEA300399353 /* PaseFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC106B91D93DEA300399353 /* PaseFile.swift */; };
+		BCC106BC1D93E8E100399353 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC106BB1D93E8E100399353 /* DetailViewController.swift */; };
 		BCF83FA11D936197000D5D60 /* BannerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF83FA01D936197000D5D60 /* BannerModels.swift */; };
 		BCF83FA31D936679000D5D60 /* BannerModelNetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF83FA21D936679000D5D60 /* BannerModelNetWork.swift */; };
 /* End PBXBuildFile section */
@@ -206,6 +208,8 @@
 		BCBA83081D92D5F5008D6044 /* MyScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScrollView.swift; sourceTree = "<group>"; };
 		BCC106B51D93A62200399353 /* HeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadCell.swift; sourceTree = "<group>"; };
 		BCC106B61D93A62200399353 /* HeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadCell.xib; sourceTree = "<group>"; };
+		BCC106B91D93DEA300399353 /* PaseFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaseFile.swift; sourceTree = "<group>"; };
+		BCC106BB1D93E8E100399353 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BCF83FA01D936197000D5D60 /* BannerModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerModels.swift; sourceTree = "<group>"; };
 		BCF83FA21D936679000D5D60 /* BannerModelNetWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerModelNetWork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -283,6 +287,7 @@
 				BCBA82D31D928EF2008D6044 /* BaseRequest.swift */,
 				BCBA82D21D928BC4008D6044 /* BridgeHeader.h */,
 				BCBA821F1D928305008D6044 /* ConfigFile.swift */,
+				BCC106B91D93DEA300399353 /* PaseFile.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -670,6 +675,7 @@
 				BCBA83001D92D159008D6044 /* M */,
 				BCBA83011D92D159008D6044 /* V */,
 				BCBA82F81D92CA9C008D6044 /* HeadlineCell.swift */,
+				BCC106BB1D93E8E100399353 /* DetailViewController.swift */,
 			);
 			path = "头条";
 			sourceTree = "<group>";
@@ -849,6 +855,7 @@
 				BCBA82C91D928BBC008D6044 /* SDWebImageManager.m in Sources */,
 				BCBA82FF1D92CB34008D6044 /* ScienceCell.swift in Sources */,
 				BCBA82A31D928BBC008D6044 /* JSONModel.m in Sources */,
+				BCC106BA1D93DEA300399353 /* PaseFile.swift in Sources */,
 				BCBA82FD1D92CB0A008D6044 /* EnterCell.swift in Sources */,
 				BCBA82B21D928BBC008D6044 /* MJRefreshAutoGifFooter.m in Sources */,
 				BCBA82AB1D928BBC008D6044 /* HDManager.m in Sources */,
@@ -877,6 +884,7 @@
 				BCBA82C01D928BBC008D6044 /* MLTransitionAnimation.m in Sources */,
 				BCBA82CC1D928BBC008D6044 /* UIImage+GIF.m in Sources */,
 				BCBA82C51D928BBC008D6044 /* SDWebImageCompat.m in Sources */,
+				BCC106BC1D93E8E100399353 /* DetailViewController.swift in Sources */,
 				BCBA82B01D928BBC008D6044 /* MJRefreshFooter.m in Sources */,
 				BCBA82B11D928BBC008D6044 /* MJRefreshHeader.m in Sources */,
 				BCBA82A21D928BBC008D6044 /* XTADScrollView.m in Sources */,

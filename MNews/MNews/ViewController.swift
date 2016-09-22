@@ -46,32 +46,31 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         contentView.registerClass(EnterCell.self, forCellWithReuseIdentifier: "EnterCell")
         
         contentView.contentOffset = CGPointZero
-//        contentView.bounces = false
+        contentView.bounces = false
         contentView.delegate = self
         contentView.dataSource = self
         self.view.addSubview(contentView)
         return contentView
-        
-        
     }()
-    
-    
-    
-    
     
     // MARK: - 页面加载
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.userInteractionEnabled = true
         btnW = Scr_W / 6
         self.view.backgroundColor = UIColor.whiteColor()
         self.makeNavi()
         self.loadData()
         self.makeHeadView()
-        
-        
-        
     }
+    
+    
+    
+    
+    
+    
+    
     
     
     //MARK: - 创建头视图
@@ -161,7 +160,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }else if indexPath.item == 3{
             cellID = "ScienceCell"
         }
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! HeadlineCell
+        if indexPath.row == 0{
+            cell.delegate = self
+        
+        }
         return cell
     }
     
@@ -188,14 +191,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
     }
-    
-    
-    
-    
-    
-    
 }
 
+extension ViewController: ShowDetail{
+    func showDetailView(web:DetailViewController){
+        self.navigationController?.pushViewController(web, animated: true)
+    }
+
+}
 
 
 
