@@ -13,10 +13,14 @@ let NavColor:UIColor = UIColor.init(red: 65 / 255.0, green: 108 / 255.0, blue: 2
 
 let Scr_W = UIScreen.mainScreen().bounds.width
 let Scr_H = UIScreen.mainScreen().bounds.height
+// 滚动条的高度
+let SrcollView_H:CGFloat = 200
 
-let Content_H = UIScreen.mainScreen().bounds.height - 64
-
-
-
+var btnW:CGFloat = 0// 按钮的宽度
+var space:CGFloat = 10// 距离屏幕左端的距离
+var topSpace:CGFloat = 0 // 距离最顶端的距离
+var btnH:CGFloat = 30// 按钮的高度
+// 展示内容的高度  去掉 Nan - btnH 
+let Content_H = UIScreen.mainScreen().bounds.height - 64 - btnH
 
 

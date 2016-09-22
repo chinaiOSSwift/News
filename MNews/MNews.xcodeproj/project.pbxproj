@@ -75,6 +75,10 @@
 		BCBA82FD1D92CB0A008D6044 /* EnterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA82FC1D92CB0A008D6044 /* EnterCell.swift */; };
 		BCBA82FF1D92CB34008D6044 /* ScienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA82FE1D92CB34008D6044 /* ScienceCell.swift */; };
 		BCBA83091D92D5F5008D6044 /* MyScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA83081D92D5F5008D6044 /* MyScrollView.swift */; };
+		BCC106B71D93A62200399353 /* HeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC106B51D93A62200399353 /* HeadCell.swift */; };
+		BCC106B81D93A62200399353 /* HeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCC106B61D93A62200399353 /* HeadCell.xib */; };
+		BCF83FA11D936197000D5D60 /* BannerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF83FA01D936197000D5D60 /* BannerModels.swift */; };
+		BCF83FA31D936679000D5D60 /* BannerModelNetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF83FA21D936679000D5D60 /* BannerModelNetWork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -200,6 +204,10 @@
 		BCBA82FC1D92CB0A008D6044 /* EnterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterCell.swift; sourceTree = "<group>"; };
 		BCBA82FE1D92CB34008D6044 /* ScienceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScienceCell.swift; sourceTree = "<group>"; };
 		BCBA83081D92D5F5008D6044 /* MyScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScrollView.swift; sourceTree = "<group>"; };
+		BCC106B51D93A62200399353 /* HeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadCell.swift; sourceTree = "<group>"; };
+		BCC106B61D93A62200399353 /* HeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadCell.xib; sourceTree = "<group>"; };
+		BCF83FA01D936197000D5D60 /* BannerModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerModels.swift; sourceTree = "<group>"; };
+		BCF83FA21D936679000D5D60 /* BannerModelNetWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerModelNetWork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -703,6 +711,8 @@
 		BCBA83001D92D159008D6044 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				BCF83FA01D936197000D5D60 /* BannerModels.swift */,
+				BCF83FA21D936679000D5D60 /* BannerModelNetWork.swift */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -711,6 +721,8 @@
 			isa = PBXGroup;
 			children = (
 				BCBA83081D92D5F5008D6044 /* MyScrollView.swift */,
+				BCC106B51D93A62200399353 /* HeadCell.swift */,
+				BCC106B61D93A62200399353 /* HeadCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -822,6 +834,7 @@
 				BCBA82141D927F27008D6044 /* Assets.xcassets in Resources */,
 				BCBA82DE1D92A35F008D6044 /* TitleCell.xib in Resources */,
 				BCBA82121D927F27008D6044 /* Main.storyboard in Resources */,
+				BCC106B81D93A62200399353 /* HeadCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -851,6 +864,7 @@
 				BCBA82CE1D928BBC008D6044 /* UIImage+WebP.m in Sources */,
 				BCBA82B91D928BBC008D6044 /* MJRefreshNormalHeader.m in Sources */,
 				BCBA82C41D928BBC008D6044 /* SDImageCache.m in Sources */,
+				BCF83FA11D936197000D5D60 /* BannerModels.swift in Sources */,
 				BCBA820F1D927F27008D6044 /* ViewController.swift in Sources */,
 				BCBA82AE1D928BBC008D6044 /* MJRefreshBackFooter.m in Sources */,
 				BCBA82A91D928BBC008D6044 /* JSONKeyMapper.m in Sources */,
@@ -858,6 +872,7 @@
 				BCBA82CF1D928BBC008D6044 /* UIImageView+HighlightedWebCache.m in Sources */,
 				BCBA83091D92D5F5008D6044 /* MyScrollView.swift in Sources */,
 				BCBA82B61D928BBC008D6044 /* MJRefreshBackNormalFooter.m in Sources */,
+				BCC106B71D93A62200399353 /* HeadCell.swift in Sources */,
 				BCBA82BF1D928BBC008D6044 /* UIView+MJExtension.m in Sources */,
 				BCBA82C01D928BBC008D6044 /* MLTransitionAnimation.m in Sources */,
 				BCBA82CC1D928BBC008D6044 /* UIImage+GIF.m in Sources */,
@@ -876,6 +891,7 @@
 				BCBA82AA1D928BBC008D6044 /* JSONValueTransformer.m in Sources */,
 				BCBA82BE1D928BBC008D6044 /* UIScrollView+MJRefresh.m in Sources */,
 				BCBA82A71D928BBC008D6044 /* JSONHTTPClient.m in Sources */,
+				BCF83FA31D936679000D5D60 /* BannerModelNetWork.swift in Sources */,
 				BCBA82D01D928BBC008D6044 /* UIImageView+WebCache.m in Sources */,
 				BCBA82B41D928BBC008D6044 /* MJRefreshAutoStateFooter.m in Sources */,
 				BCBA82D11D928BBC008D6044 /* UIView+WebCacheOperation.m in Sources */,

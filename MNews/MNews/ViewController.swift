@@ -9,10 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    var btnW:CGFloat = 0// 按钮的宽度
-    var space:CGFloat = 10// 距离屏幕左端的距离
-    var topSpace:CGFloat = 0 // 距离最顶端的距离
-    var btnH:CGFloat = 30// 按钮的高度
+    
     var sliderView:UIView! // 小滑块
     var titleArray = NSMutableArray() // 标题数组
     var titleCollectionView:UICollectionView!
@@ -20,7 +17,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     lazy var contentHead:UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = UICollectionViewScrollDirection.Horizontal
-        let header = UICollectionView.init(frame: CGRectMake(0, 0, Scr_W, self.btnH), collectionViewLayout: layout)
+        let header = UICollectionView.init(frame: CGRectMake(0, 0, Scr_W, btnH), collectionViewLayout: layout)
 //        header.delegate = self
 //        header.dataSource = self
         header.backgroundColor = UIColor.brownColor()
@@ -37,7 +34,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let layout = UICollectionViewFlowLayout()
         // 滚动方向
         layout.scrollDirection = UICollectionViewScrollDirection.Horizontal
-        let contentView = UICollectionView.init(frame: CGRectMake(0, 67 + self.btnH, Scr_W, Scr_H - 67 + self.btnH), collectionViewLayout: layout)
+        let contentView = UICollectionView.init(frame: CGRectMake(0, 67 + btnH, Scr_W, Scr_H - 67 + btnH), collectionViewLayout: layout)
         contentView.backgroundColor = UIColor.init(white: 0.5, alpha: 0.5)
         //
         contentView.showsHorizontalScrollIndicator = false
@@ -66,7 +63,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.userInteractionEnabled = true
-        self.btnW = Scr_W / 6
+        btnW = Scr_W / 6
         self.view.backgroundColor = UIColor.whiteColor()
         self.makeNavi()
         self.loadData()
@@ -80,15 +77,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //MARK: - 创建头视图
     func makeHeadView() -> Void {
         let head = UIView.init(frame: CGRectMake(0, 64, Scr_W, btnH + 3))
-        self.sliderView = UIView.init(frame: CGRectMake(0, head.mj_h - 3, self.btnW, 2))
+        self.sliderView = UIView.init(frame: CGRectMake(0, head.mj_h - 3, btnW, 2))
         self.sliderView.backgroundColor = UIColor.blueColor()
         head.addSubview(self.sliderView)
         head.addSubview(self.contentHead)
         //        head.backgroundColor = UIColor.orangeColor()
-        
-        
-        
-        
         
         // 添加下面的灰色的线
         let view = UIView.init(frame: CGRectMake(0, head.mj_h - 1, Scr_W, 1))
@@ -190,7 +183,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if collectionView == self.contentHead{
             print("标题 = \((self.titleArray[indexPath.row] as! TitleModel).name)")
             UIView.animateWithDuration(0.25) {
-                self.sliderView.mj_x = self.btnW * (CGFloat(indexPath.row) % 6)
+                self.sliderView.mj_x = btnW * (CGFloat(indexPath.row) % 6)
             }
         }
         
