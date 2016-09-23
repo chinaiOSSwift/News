@@ -63,10 +63,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         contentView.showsHorizontalScrollIndicator = false
         contentView.pagingEnabled = true
         //注册界面
-        contentView.registerClass(ScienceCell.self, forCellWithReuseIdentifier: "ScienceCell")
-        contentView.registerClass(HeadlineCell.self, forCellWithReuseIdentifier: "HeadlineCell")
-        contentView.registerClass(RecCell.self, forCellWithReuseIdentifier: "RecCell")
-        contentView.registerClass(EnterCell.self, forCellWithReuseIdentifier: "EnterCell")
+        
+        contentView.registerClass(HeadlineCell.self, forCellWithReuseIdentifier: "HeadlineCell") // 头条
+        contentView.registerClass(RecCell.self, forCellWithReuseIdentifier: "RecCell") // 推荐
+        contentView.registerClass(EnterCell.self, forCellWithReuseIdentifier: "EnterCell") // 娱乐
+        contentView.registerClass(ScienceCell.self, forCellWithReuseIdentifier: "ScienceCell") // 科技
+        contentView.registerClass(BeautyCell.self, forCellWithReuseIdentifier: "BeautyCell") // 美女
+        contentView.registerClass(SubCell.self, forCellWithReuseIdentifier: "SubCell") // 订阅
+        contentView.registerClass(FunnyCell.self, forCellWithReuseIdentifier: "FunnyCell") // // 搞笑
+        contentView.registerClass(SocialCell.self, forCellWithReuseIdentifier: "SocialCell") // 社会
+        contentView.registerClass(HotCell.self, forCellWithReuseIdentifier: "HotCell") // 热点
+        contentView.registerClass(SportCell.self, forCellWithReuseIdentifier: "SportCell") // 体育
+        contentView.registerClass(FocusCell.self, forCellWithReuseIdentifier: "FocusCell") // 焦点
+        
         contentView.contentOffset = CGPointZero
         contentView.bounces = false
         contentView.delegate = self
@@ -135,32 +144,61 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return self.titleArr.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
+        var cell = UICollectionViewCell()
         var cellID = ""
-        if indexPath.item == 0{
+        if indexPath.item == 0{  // 头条
             cellID = "HeadlineCell"
-        }else if indexPath.item == 1{
-            cellID = "RecCell"
-        }else if indexPath.item == 2{
-            cellID = "EnterCell"
-        }else if indexPath.item == 3{
-            cellID = "ScienceCell"
-        }
-        let  cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath)
-        if indexPath.item == 0{
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! HeadlineCell
             let cell1 = cell as! HeadlineCell
             cell1.delegate = self
-        }else if indexPath.item == 3{
+            
+        }else if indexPath.item == 1{  //还没指点代理 // 推荐
+            cellID = "RecCell"
+           cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! RecCell
+            let cell1 = cell as! RecCell
+            cell1.delegate = self
+        }else if indexPath.item == 2{  // 2222 // 娱乐
+            cellID = "EnterCell"
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! EnterCell
+            let cell1 = cell as! EnterCell
+            cell1.delegate = self
+        }else if indexPath.item == 3{ // 科技
+            cellID = "ScienceCell"
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! ScienceCell
             let cell2 = cell as! ScienceCell
             cell2.delegate = self
+            
+        }else if indexPath.item == 4{ // 美女
+            cellID = "BeautyCell"
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! BeautyCell
+            
+        }else if indexPath.item == 5{ // 订阅
+            cellID = "SubCell"
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! SubCell
+        }else if indexPath.item == 6{ // 搞笑
+            cellID = "FunnyCell"
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! FunnyCell
+            let cell1 = cell as! FunnyCell
+            cell1.delegate = self
+        }else if indexPath.item == 7{ // 社会
+            cellID = "SocialCell"
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! SocialCell
+            let cell1 = cell as! SocialCell
+            cell1.delegate = self
+        }else if indexPath.item == 8{ // 热点
+            cellID = "HotCell"
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! HotCell
+        }else if indexPath.item == 9{ // 体育
+            cellID = "SportCell"
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! SportCell
+        }else{ // 焦点
+            cellID = "FocusCell"
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! FocusCell
         }
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        //        if collectionView == self.contentHead{
-        //            return CGSizeMake(self.btnW, self.btnH)
-        //        }
         return CGSizeMake(collectionView.mj_w, collectionView.mj_h)
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {

@@ -20,7 +20,6 @@ class HeadlineCell: UICollectionViewCell {
     var contentArr = NSMutableArray()
     lazy var headView:UIView = {
         let view = UIView.init(frame: CGRectMake(0, 0, Scr_W,SrcollView_H))
-        print("赋值前:\(self.bannerArray.count) ")
         let scrollView = MyScrollView.init(frame: CGRectMake(0, 0, view.mj_w,view.mj_h), arr: self.bannerArray, isTimer: true)
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.delegator = self
@@ -28,7 +27,10 @@ class HeadlineCell: UICollectionViewCell {
         self.pageCont.frame = pageRect
         //                pageCont.backgroundColor = UIColor.whiteColor()
         self.pageCont.numberOfPages = self.bannerArray.count
-        self.pageCont.currentPage = scrollView.currentPage!
+        if scrollView.currentPage != nil{
+            self.pageCont.currentPage = scrollView.currentPage!
+            
+        }
         self.pageCont.userInteractionEnabled = false
         // 小圆点的颜色
         self.pageCont.currentPageIndicatorTintColor = NavColor
@@ -66,10 +68,8 @@ class HeadlineCell: UICollectionViewCell {
         let url = "http://reader.meizu.com/android/unauth/index/latest_articles.do?articleId=122708732&supportSDK=16&putdate=1474588053000&columnIds=34_1_2_19_20_16_4_37_5_14_9_18_10_7_3_25_23_15_40_41_17_24_26_29_28_30_31_32_21_6&deviceType=MX4&v=2820&operator=46007&nt=wifi&vn=2.8.20&deviceinfo=TD0FxRLgnTr%2FKSlvzaoH%2B0IWG0uV53nTTGKHI68jUHezpZyAXOHYUyswalmpjtGYug1RGYtF4K6OELXz7U5ucKlZfH9PHvV%2BYNrlMOn%2BS5nmOOq4N%2B3mEem%2Bz7HLUN7xiYxfcA7Ea2KxY4lkphp3z%2Fi%2FddTMaH61v9j61JHVqso%3D&os=5.1-1469416338_stable"
         
         HDManager.startLoading()
-        print("出错前前")
         BannerModel.requestBannerData { (array, error) in
             if error == nil{
-                print("出错前")
                 self.bannerArray.addObjectsFromArray(array!)
                 print("滚动条数据:= \(self.bannerArray.count)")
             }
@@ -80,7 +80,6 @@ class HeadlineCell: UICollectionViewCell {
             if error == nil {
                 self.contentArr.addObjectsFromArray(array!)
                 print("头条页面数据: = \(self.contentArr.count)")
-                print(111111111111111111)
                 self.tableView.reloadData()
             }
             HDManager.stopLoading()
@@ -95,6 +94,10 @@ extension HeadlineCell:ChangeCurrentPage{
     func changePage(page: Int) {
         self.pageCont.currentPage = page - 1
     }
+    func gotoDetail(web: DetailViewController) {
+        self.delegate?.showDetailView(web)
+    }
+    
 }
 
 //MARK: - UITableView 的协议方法
@@ -107,7 +110,11 @@ extension HeadlineCell:UITableViewDelegate, UITableViewDataSource{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("HeadCell", forIndexPath: indexPath) as! HeadCell
         let model = self.contentArr[indexPath.row] as! ContentModel
-        cell.imgView.sd_setImageWithURL(NSURL.init(string: model.imgUrlList.lastObject as! String))
+        if model.imgUrlList == nil || model.imgUrlList.count == 0{
+            
+        }else{
+            cell.imgView.sd_setImageWithURL(NSURL.init(string: model.imgUrlList.lastObject as! String))
+        }
         cell.titleL.text = model.title
         cell.contentCountL.text = "\(model.pv)" + "人看过"
         return cell
@@ -116,7 +123,6 @@ extension HeadlineCell:UITableViewDelegate, UITableViewDataSource{
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100
     }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         // 当点击的时候下载相对应的 json 文件

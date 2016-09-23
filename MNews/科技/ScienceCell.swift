@@ -17,7 +17,7 @@ class ScienceCell: UICollectionViewCell {
     
     lazy var tableView:UITableView = {
         let tableView = UITableView.init(frame: CGRectMake(0, 0, Scr_W, Content_H))
-        tableView.backgroundColor = UIColor.brownColor()
+        tableView.backgroundColor = UIColor.whiteColor()
         tableView.registerNib(UINib.init(nibName: "SciCell", bundle: nil), forCellReuseIdentifier: "SciCell")
         tableView.delegate = self
         tableView.dataSource = self
@@ -30,13 +30,24 @@ class ScienceCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.backgroundColor = UIColor.greenColor()
+        self.contentView.backgroundColor = UIColor.whiteColor()
         
         self.dataLoad()
     }
     // MARK: - 网络请求
     func dataLoad() -> Void {
-        let url = "http://reader.meizu.com/android/unauth/columns/article/refresh.do?lastTime=1474546734000&articleId=122727898&columnId=2&v=2820&operator=46007&nt=wifi&vn=2.8.20&deviceinfo=wmwPl%2B1aYe0hhHiQsGeqU603kp6E2PesAc7Rt6p34d57Blxcma25kZTyFu7VjL88G2yVvAKuy177NdJ5d%2FAL2X%2Bvf2OKDL8PH%2B7xOH%2FHALhnf4jOd40m9giVbv4nchM2jFxiU6AV726Xn8nteKdOjyJmkIFJqYeGzlvCbP0ehX8%3D&os=5.1-1469416338_stable"
+        
+    
+        let date = NSDate.init(timeIntervalSince1970: 1474546734000)
+        let formate = NSDateFormatter.init()
+        formate.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        print(date)
+        let interval = NSTimeIntervalSince1970
+        print(interval)
+        
+    
+//        let url = "http://reader.meizu.com/android/unauth/columns/article/refresh.do?lastTime=1474546734000&articleId=122727898&columnId=2&v=2820&operator=46007&nt=wifi&vn=2.8.20&deviceinfo=wmwPl%2B1aYe0hhHiQsGeqU603kp6E2PesAc7Rt6p34d57Blxcma25kZTyFu7VjL88G2yVvAKuy177NdJ5d%2FAL2X%2Bvf2OKDL8PH%2B7xOH%2FHALhnf4jOd40m9giVbv4nchM2jFxiU6AV726Xn8nteKdOjyJmkIFJqYeGzlvCbP0ehX8%3D&os=5.1-1469416338_stable"
+        let url = "http://reader.meizu.com/android/unauth/columns/article/list.do?columnId=2&v=2820&operator=46007&nt=wifi&vn=2.8.20&deviceinfo=WKEkCva5gyfS5gI67r6trHzh924ZeVQlpXJ2s6sAGq4QZyKfeYQw%2BeA%2FItDLshKe%2FHN5lfQmn4qR94II2GtNqn77%2F%2BS5en1unDDorJvI%2B5tz4LZoH5ICxuuDsfm1Ih87%2FBgU7HuKroipF1U1DBibVvnbo68lRff2%2B2I9FNPHTGc%3D&os=5.1-1469416338_stable"
         HDManager.startLoading()
         ContentModel.requestData(url) { (array, error) in
             if error == nil {
@@ -63,11 +74,10 @@ extension ScienceCell: UITableViewDelegate, UITableViewDataSource{
         
         let cell = tableView.dequeueReusableCellWithIdentifier("SciCell", forIndexPath: indexPath) as! SciCell
         let model = self.dataArr[indexPath.row] as! ContentModel
-        if model.imgUrlList.lastObject  == nil{
-            cell.iconView.removeFromSuperview()
-            cell.titleL.frame = CGRectMake(10, 5, 100, 68)
-        }else{
-            cell.iconView?.sd_setImageWithURL(NSURL.init(string: model.imgUrlList.lastObject as! String))
+        print("科技 = \(model.imgUrlList.count) \(String(model.imgUrlList.firstObject))")
+        if model.imgUrlList.firstObject != nil || model.imgUrlList.count != 0{
+            cell.iconView?.sd_setImageWithURL(NSURL.init(string:  String(model.imgUrlList.firstObject!)))
+            
         }
         cell.titleL.text = model.title
         cell.contentCountL.text = "\(model.pv)" + "人看过"

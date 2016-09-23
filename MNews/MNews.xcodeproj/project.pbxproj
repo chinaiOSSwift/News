@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		BC9990471D94E530002BF484 /* RecModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9990461D94E530002BF484 /* RecModels.swift */; };
 		BC9990491D94E7D7002BF484 /* RecModelNewWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9990481D94E7D7002BF484 /* RecModelNewWork.swift */; };
+		BC99904B1D951B3D002BF484 /* EnterModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99904A1D951B3D002BF484 /* EnterModels.swift */; };
+		BC99904D1D951B7B002BF484 /* EnterModelNetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99904C1D951B7B002BF484 /* EnterModelNetWork.swift */; };
+		BC99904F1D955137002BF484 /* BeautyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99904E1D955137002BF484 /* BeautyCell.swift */; };
+		BC9990511D955169002BF484 /* SubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9990501D955169002BF484 /* SubCell.swift */; };
+		BC9990531D95519A002BF484 /* FunnyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9990521D95519A002BF484 /* FunnyCell.swift */; };
+		BC9990551D9551CD002BF484 /* SocialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9990541D9551CD002BF484 /* SocialCell.swift */; };
+		BC9990571D9551DC002BF484 /* HotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9990561D9551DC002BF484 /* HotCell.swift */; };
+		BC9990591D9551EC002BF484 /* SportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9990581D9551EC002BF484 /* SportCell.swift */; };
+		BC99905B1D955223002BF484 /* FocusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99905A1D955223002BF484 /* FocusCell.swift */; };
+		BC99905F1D95667F002BF484 /* FunModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99905E1D95667F002BF484 /* FunModel.swift */; };
+		BC9990611D9571FC002BF484 /* FunModelNetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9990601D9571FC002BF484 /* FunModelNetWork.swift */; };
 		BCB71C191D941D940015DD8C /* SciCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB71C171D941D940015DD8C /* SciCell.swift */; };
 		BCB71C1A1D941D940015DD8C /* SciCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB71C181D941D940015DD8C /* SciCell.xib */; };
 		BCBA820D1D927F27008D6044 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA820C1D927F27008D6044 /* AppDelegate.swift */; };
@@ -89,6 +100,17 @@
 /* Begin PBXFileReference section */
 		BC9990461D94E530002BF484 /* RecModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecModels.swift; sourceTree = "<group>"; };
 		BC9990481D94E7D7002BF484 /* RecModelNewWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecModelNewWork.swift; sourceTree = "<group>"; };
+		BC99904A1D951B3D002BF484 /* EnterModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterModels.swift; sourceTree = "<group>"; };
+		BC99904C1D951B7B002BF484 /* EnterModelNetWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterModelNetWork.swift; sourceTree = "<group>"; };
+		BC99904E1D955137002BF484 /* BeautyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeautyCell.swift; sourceTree = "<group>"; };
+		BC9990501D955169002BF484 /* SubCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCell.swift; sourceTree = "<group>"; };
+		BC9990521D95519A002BF484 /* FunnyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunnyCell.swift; sourceTree = "<group>"; };
+		BC9990541D9551CD002BF484 /* SocialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialCell.swift; sourceTree = "<group>"; };
+		BC9990561D9551DC002BF484 /* HotCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotCell.swift; sourceTree = "<group>"; };
+		BC9990581D9551EC002BF484 /* SportCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportCell.swift; sourceTree = "<group>"; };
+		BC99905A1D955223002BF484 /* FocusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusCell.swift; sourceTree = "<group>"; };
+		BC99905E1D95667F002BF484 /* FunModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunModel.swift; sourceTree = "<group>"; };
+		BC9990601D9571FC002BF484 /* FunModelNetWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunModelNetWork.swift; sourceTree = "<group>"; };
 		BCB71C171D941D940015DD8C /* SciCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SciCell.swift; sourceTree = "<group>"; };
 		BCB71C181D941D940015DD8C /* SciCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SciCell.xib; sourceTree = "<group>"; };
 		BCBA82091D927F27008D6044 /* MNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,6 +253,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC99905C1D956662002BF484 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				BC99905E1D95667F002BF484 /* FunModel.swift */,
+				BC9990601D9571FC002BF484 /* FunModelNetWork.swift */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		BC99905D1D956662002BF484 /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
 		BCBA82001D927F27008D6044 = {
 			isa = PBXGroup;
 			children = (
@@ -238,21 +276,21 @@
 				BCBA82F41D92CA3F008D6044 /* 推荐 */,
 				BCBA82F71D92CA3F008D6044 /* 娱乐 */,
 				BCBA82E91D92CA3F008D6044 /* 科技 */,
-				BCBA82E31D92CA3F008D6044 /* 北京 */,
-				BCBA82E41D92CA3F008D6044 /* 财经 */,
+				BCBA82EB1D92CA3F008D6044 /* 美女 */,
 				BCBA82E51D92CA3F008D6044 /* 订阅 */,
 				BCBA82E61D92CA3F008D6044 /* 搞笑 */,
+				BCBA82EF1D92CA3F008D6044 /* 社会 */,
+				BCBA82EE1D92CA3F008D6044 /* 热点 */,
+				BCBA82F21D92CA3F008D6044 /* 体育 */,
 				BCBA82E71D92CA3F008D6044 /* 焦点 */,
+				BCBA82E31D92CA3F008D6044 /* 北京 */,
+				BCBA82E41D92CA3F008D6044 /* 财经 */,
 				BCBA82E81D92CA3F008D6044 /* 军事 */,
 				BCBA82EA1D92CA3F008D6044 /* 历史 */,
-				BCBA82EB1D92CA3F008D6044 /* 美女 */,
 				BCBA82EC1D92CA3F008D6044 /* 汽车 */,
 				BCBA82ED1D92CA3F008D6044 /* 情感 */,
-				BCBA82EE1D92CA3F008D6044 /* 热点 */,
-				BCBA82EF1D92CA3F008D6044 /* 社会 */,
 				BCBA82F01D92CA3F008D6044 /* 生活 */,
 				BCBA82F11D92CA3F008D6044 /* 视觉 */,
-				BCBA82F21D92CA3F008D6044 /* 体育 */,
 				BCBA82F51D92CA3F008D6044 /* 星座 */,
 				BCBA82F61D92CA3F008D6044 /* 影视 */,
 				BCBA820B1D927F27008D6044 /* MNews */,
@@ -576,6 +614,7 @@
 		BCBA82E51D92CA3F008D6044 /* 订阅 */ = {
 			isa = PBXGroup;
 			children = (
+				BC9990501D955169002BF484 /* SubCell.swift */,
 			);
 			path = "订阅";
 			sourceTree = "<group>";
@@ -583,6 +622,9 @@
 		BCBA82E61D92CA3F008D6044 /* 搞笑 */ = {
 			isa = PBXGroup;
 			children = (
+				BC99905C1D956662002BF484 /* M */,
+				BC99905D1D956662002BF484 /* V */,
+				BC9990521D95519A002BF484 /* FunnyCell.swift */,
 			);
 			path = "搞笑";
 			sourceTree = "<group>";
@@ -590,6 +632,7 @@
 		BCBA82E71D92CA3F008D6044 /* 焦点 */ = {
 			isa = PBXGroup;
 			children = (
+				BC99905A1D955223002BF484 /* FocusCell.swift */,
 			);
 			path = "焦点";
 			sourceTree = "<group>";
@@ -621,6 +664,7 @@
 		BCBA82EB1D92CA3F008D6044 /* 美女 */ = {
 			isa = PBXGroup;
 			children = (
+				BC99904E1D955137002BF484 /* BeautyCell.swift */,
 			);
 			path = "美女";
 			sourceTree = "<group>";
@@ -642,6 +686,7 @@
 		BCBA82EE1D92CA3F008D6044 /* 热点 */ = {
 			isa = PBXGroup;
 			children = (
+				BC9990561D9551DC002BF484 /* HotCell.swift */,
 			);
 			path = "热点";
 			sourceTree = "<group>";
@@ -649,6 +694,7 @@
 		BCBA82EF1D92CA3F008D6044 /* 社会 */ = {
 			isa = PBXGroup;
 			children = (
+				BC9990541D9551CD002BF484 /* SocialCell.swift */,
 			);
 			path = "社会";
 			sourceTree = "<group>";
@@ -670,6 +716,7 @@
 		BCBA82F21D92CA3F008D6044 /* 体育 */ = {
 			isa = PBXGroup;
 			children = (
+				BC9990581D9551EC002BF484 /* SportCell.swift */,
 			);
 			path = "体育";
 			sourceTree = "<group>";
@@ -757,6 +804,8 @@
 		BCBA83041D92D169008D6044 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				BC99904A1D951B3D002BF484 /* EnterModels.swift */,
+				BC99904C1D951B7B002BF484 /* EnterModelNetWork.swift */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -871,8 +920,10 @@
 				BCBA82FD1D92CB0A008D6044 /* EnterCell.swift in Sources */,
 				BCBA82B21D928BBC008D6044 /* MJRefreshAutoGifFooter.m in Sources */,
 				BCBA82AB1D928BBC008D6044 /* HDManager.m in Sources */,
+				BC9990511D955169002BF484 /* SubCell.swift in Sources */,
 				BCBA82B51D928BBC008D6044 /* MJRefreshBackGifFooter.m in Sources */,
 				BCBA82A41D928BBC008D6044 /* JSONModelClassProperty.m in Sources */,
+				BC99905B1D955223002BF484 /* FocusCell.swift in Sources */,
 				BCBA82201D928305008D6044 /* ConfigFile.swift in Sources */,
 				BCBA82D41D928EF2008D6044 /* BaseRequest.swift in Sources */,
 				BCBA82C21D928BBC008D6044 /* MKAnnotationView+WebCache.m in Sources */,
@@ -881,23 +932,29 @@
 				BCBA82F91D92CA9C008D6044 /* HeadlineCell.swift in Sources */,
 				BCBA82CE1D928BBC008D6044 /* UIImage+WebP.m in Sources */,
 				BCBA82B91D928BBC008D6044 /* MJRefreshNormalHeader.m in Sources */,
+				BC99904F1D955137002BF484 /* BeautyCell.swift in Sources */,
 				BCBA82C41D928BBC008D6044 /* SDImageCache.m in Sources */,
 				BCF83FA11D936197000D5D60 /* BannerModels.swift in Sources */,
 				BCBA820F1D927F27008D6044 /* ViewController.swift in Sources */,
 				BCBA82AE1D928BBC008D6044 /* MJRefreshBackFooter.m in Sources */,
 				BCBA82A91D928BBC008D6044 /* JSONKeyMapper.m in Sources */,
+				BC9990571D9551DC002BF484 /* HotCell.swift in Sources */,
 				BCBA82CD1D928BBC008D6044 /* UIImage+MultiFormat.m in Sources */,
 				BCBA82CF1D928BBC008D6044 /* UIImageView+HighlightedWebCache.m in Sources */,
+				BC9990591D9551EC002BF484 /* SportCell.swift in Sources */,
 				BCBA83091D92D5F5008D6044 /* MyScrollView.swift in Sources */,
 				BCBA82B61D928BBC008D6044 /* MJRefreshBackNormalFooter.m in Sources */,
 				BCC106B71D93A62200399353 /* HeadCell.swift in Sources */,
 				BCBA82BF1D928BBC008D6044 /* UIView+MJExtension.m in Sources */,
+				BC99904D1D951B7B002BF484 /* EnterModelNetWork.swift in Sources */,
+				BC99904B1D951B3D002BF484 /* EnterModels.swift in Sources */,
 				BCBA82C01D928BBC008D6044 /* MLTransitionAnimation.m in Sources */,
 				BCBA82CC1D928BBC008D6044 /* UIImage+GIF.m in Sources */,
 				BCBA82C51D928BBC008D6044 /* SDWebImageCompat.m in Sources */,
 				BCC106BC1D93E8E100399353 /* DetailViewController.swift in Sources */,
 				BCBA82B01D928BBC008D6044 /* MJRefreshFooter.m in Sources */,
 				BCBA82B11D928BBC008D6044 /* MJRefreshHeader.m in Sources */,
+				BC9990531D95519A002BF484 /* FunnyCell.swift in Sources */,
 				BCBA82A21D928BBC008D6044 /* XTADScrollView.m in Sources */,
 				BCBA82C11D928BBC008D6044 /* UIViewController+MLTransition.m in Sources */,
 				BCBA82C81D928BBC008D6044 /* SDWebImageDownloaderOperation.m in Sources */,
@@ -918,6 +975,8 @@
 				BCBA820D1D927F27008D6044 /* AppDelegate.swift in Sources */,
 				BCBA82CA1D928BBC008D6044 /* SDWebImagePrefetcher.m in Sources */,
 				BCBA82FB1D92CAD0008D6044 /* RecCell.swift in Sources */,
+				BC9990611D9571FC002BF484 /* FunModelNetWork.swift in Sources */,
+				BC99905F1D95667F002BF484 /* FunModel.swift in Sources */,
 				BCBA82E01D92A823008D6044 /* TitleModel.swift in Sources */,
 				BCBA82BA1D928BBC008D6044 /* MJRefreshStateHeader.m in Sources */,
 				BCBA82E21D92A99B008D6044 /* TitleModelNetWorkManeger.swift in Sources */,
@@ -928,6 +987,7 @@
 				BCBA82AD1D928BBC008D6044 /* MJRefreshAutoFooter.m in Sources */,
 				BCBA82CB1D928BBC008D6044 /* UIButton+WebCache.m in Sources */,
 				BCBA82C71D928BBC008D6044 /* SDWebImageDownloader.m in Sources */,
+				BC9990551D9551CD002BF484 /* SocialCell.swift in Sources */,
 				BCBA82B71D928BBC008D6044 /* MJRefreshBackStateFooter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

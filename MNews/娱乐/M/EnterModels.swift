@@ -1,5 +1,5 @@
 //
-//  RecModels.swift
+//  EnterModels.swift
 //  MNews
 //
 //  Created by qianfeng on 16/9/23.
@@ -7,11 +7,8 @@
 //
 
 import Foundation
-
-
-
-class RecModel:JSONModel{
-//    var cid:NSNumber!
+class EnterModel:JSONModel{
+    //    var cid:NSNumber!
     var cmtUrl:String! // 评论url
     var id:String! // 文章的id
     var sourceName:String! // 凤凰娱乐
@@ -20,7 +17,6 @@ class RecModel:JSONModel{
     var zzdUrl:String! // 另一网站url
     var originalUrl:String! // 原生网址
     var imageUrl:String!
-    
     // aa_bb -> aaBb
     override class func keyMapper() -> JSONKeyMapper{
         return JSONKeyMapper.mapperFromUnderscoreCaseToCamelCase()
@@ -30,21 +26,4 @@ class RecModel:JSONModel{
     override class func propertyIsOptional(propertyName:String) -> Bool {
         return true
     }
-    
-    
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

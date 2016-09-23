@@ -1,5 +1,5 @@
 //
-//  RecModelNewWork.swift
+//  EnterModelNetWork.swift
 //  MNews
 //
 //  Created by qianfeng on 16/9/23.
@@ -8,9 +8,8 @@
 
 import Foundation
 
-extension RecModel{
-    
-    class func requestFootData(url:String, callBack:(array:[AnyObject]?,idArray:[String]?, error: NSError?) -> Void) -> Void {
+extension EnterModel{
+    class func requestData(url:String, callBack:(array:[AnyObject]?,idArray:[String]?, error: NSError?) -> Void) -> Void {
         BaseRequest.getWithURL(url, para: nil) { (data, error) in
             if error == nil{
                 //                let str = NSString.init(data: data!, encoding: NSUTF8StringEncoding)
@@ -23,9 +22,9 @@ extension RecModel{
                 
                 //                RecModel.arrayOfModelsFromDictionaries(<#T##array: [AnyObject]!##[AnyObject]!#>)
                 
-                var models = [RecModel]()
+                var models = [EnterModel]()
                 for key in keys{
-                    let model = RecModel()
+                    let model = EnterModel()
                     let eachDic = dic[key] as! NSDictionary
                     model.cmtUrl = eachDic["cmt_url"] as! String
                     model.id = eachDic["id"] as! String
@@ -39,7 +38,6 @@ extension RecModel{
                         model.imageUrl = (array.firstObject as! NSDictionary)["url"] as! String
                     }
                     models.append(model)
-                    
                 }
                 // id数组
                 let ids = obj["data"]!["remove_ids"] as! [String]
@@ -52,21 +50,6 @@ extension RecModel{
                 })
             }
         }
-        
-        
-        
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
-
-
-
 

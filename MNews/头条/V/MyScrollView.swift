@@ -10,6 +10,7 @@ import UIKit
 
 protocol ChangeCurrentPage:NSObjectProtocol {
     func changePage(page:Int) -> Void
+    func gotoDetail(web:DetailViewController) -> Void
 }
 
 // 传一个模型数组
@@ -20,15 +21,12 @@ class MyScrollView: UIScrollView, UIScrollViewDelegate {
     var currentPage:Int?
     init(frame: CGRect, arr: NSArray?, isTimer: Bool = false) {
         super.init(frame: frame)
-        
-        print(3333333333333333)
-        if arr == nil{
+        if arr?.count == 0{
             return
         }
         nameArr = arr as! [BannerModel]
         nameArr.insert(nameArr[nameArr.count - 1], atIndex: 0)
         nameArr.append(nameArr[1])
-        
         var rect = frame
         for i in 0..<nameArr.count {
             rect.origin.x = frame.size.width * CGFloat(i)
@@ -77,12 +75,13 @@ class MyScrollView: UIScrollView, UIScrollViewDelegate {
     // MARKL:- 图片点击方法
     func tapClick(tap:UITapGestureRecognizer) -> Void {
        let index = (tap.view!.tag) - 100
-       print(nameArr[index].title)
-        
-        // 能拿到model
+       let model = nameArr[index]
+        if model.articleUrl != ""{
+            let web = DetailViewController()
+            web.url = PaseFile.paseFile(model.articleUrl)
+            self.delegator?.gotoDetail(web)
+        }
     }
-    
-    
     
     
     func timeRun() -> Void {
