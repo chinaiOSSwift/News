@@ -12,7 +12,6 @@ import Foundation
 class  PaseFile{
     class func paseFile(articleUrl:String) -> String {
         print(articleUrl)
-        var url:String = ""
         /*
          // 下载 路径
          

@@ -24,8 +24,8 @@ var topSpace:CGFloat = 0 // 距离最顶端的距离
 var btnH:CGFloat = 30// 按钮的高度
 // 展示内容的高度  去掉 Nan - btnH 
 let Content_H = UIScreen.mainScreen().bounds.height - 64 - btnH
-
-
+// 其他页面的展示内容
+let ContentView_H = UIScreen.mainScreen().bounds.height - 64
 
 
 

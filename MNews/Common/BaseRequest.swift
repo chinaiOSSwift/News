@@ -8,6 +8,32 @@
 
 import UIKit
 
+
+
+// MARK: - 公用的数据模型
+class ContentModel:JSONModel{
+    var articleId:NSNumber!
+    var articleUrl:String!
+    var contentSourceName:String!  // 网易头条
+    var Description:String! // 描述
+    var commentCount:NSNumber! // 浏览次数
+    var imgUrlList:NSArray! // 图片数组
+    var pv:NSNumber!
+    var title:String!
+    
+    override class func keyMapper() -> JSONKeyMapper{
+        return JSONKeyMapper.init(modelToJSONDictionary: ["Description":"description"])
+        // 特殊处理某一个字段,模型中的属性 和字典中的key  不一致时, 设置赋值对应关系,模型中的属性名作为键,字典中的key 作为value
+        
+    }
+    
+    override class func propertyIsOptional(propertyName:String) -> Bool{
+        return true
+    }
+    
+}
+
+
 class BaseRequest{
     
     class func getWithURL(url:String!,para:NSDictionary?,callBack:(data:NSData?,error:NSError?)->Void)->Void
@@ -87,8 +113,40 @@ class BaseRequest{
 
     
 }
-
-
+// MARK: - 通过的网络请求
+extension ContentModel{
+    // MARK: - 请求展示内容数组
+    class func requestData(url:String,callBack:(array:[AnyObject]?,error:NSError?) -> Void) -> Void {
+        BaseRequest.getWithURL(url, para: nil) { (data, error) in
+            if error == nil{
+                //                let str = NSString.init(data: data!, encoding: NSUTF8StringEncoding)
+                //                print(str!)
+                
+                
+                let obj = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                
+                let array = obj["value"]!["articles"] as? [AnyObject]
+                var models:NSMutableArray? = nil
+                
+                do{
+                    models = try ContentModel.arrayOfModelsFromDictionaries(array, error: ())
+                }catch{
+                    models = NSMutableArray()
+                }
+                dispatch_async(dispatch_get_main_queue(), {
+                    callBack(array: models! as [AnyObject], error: nil)
+                })
+            }else{
+                dispatch_async(dispatch_get_main_queue(), {
+                    callBack(array: nil, error: error)
+                })
+                
+            }
+        }
+        
+    }
+    
+}
 
 
 

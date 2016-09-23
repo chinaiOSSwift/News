@@ -18,10 +18,13 @@ class MyScrollView: UIScrollView, UIScrollViewDelegate {
     var nameArr:[BannerModel]!
     weak var delegator:ChangeCurrentPage?
     var currentPage:Int?
-    init(frame: CGRect, arr: NSArray, isTimer: Bool = false) {
-        print(3333333333333333)
+    init(frame: CGRect, arr: NSArray?, isTimer: Bool = false) {
         super.init(frame: frame)
         
+        print(3333333333333333)
+        if arr == nil{
+            return
+        }
         nameArr = arr as! [BannerModel]
         nameArr.insert(nameArr[nameArr.count - 1], atIndex: 0)
         nameArr.append(nameArr[1])

@@ -11,22 +11,45 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var sliderView:UIView! // 小滑块
-    var titleArray = NSMutableArray() // 标题数组
+    var titleArr = [String]()
     var titleCollectionView:UICollectionView!
     
-    lazy var contentHead:UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = UICollectionViewScrollDirection.Horizontal
-        let header = UICollectionView.init(frame: CGRectMake(0, 0, Scr_W, btnH), collectionViewLayout: layout)
-//        header.delegate = self
-//        header.dataSource = self
+    lazy var contentHead:UIScrollView = {
+        let path = NSBundle.mainBundle().pathForResource("TitleList", ofType: "plist")
+        self.titleArr = NSArray.init(contentsOfFile: path!) as! [String]
+        let header = UIScrollView.init(frame: CGRectMake(0, 0, Scr_W, btnH))
+        for i in 0..<self.titleArr.count{
+            let button = UIButton.init(type: .System)
+            button.frame = CGRectMake(btnW * CGFloat(i), 0, btnW, btnH)
+            button.backgroundColor = UIColor.redColor()
+            button.setTitle(self.titleArr[i], forState: UIControlState.Normal)
+            button.setTitle(self.titleArr[i], forState: UIControlState.Highlighted)
+            button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+            button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+            button.titleLabel?.font = UIFont.systemFontOfSize(17)
+            button.setTitleColor(NavColor, forState: UIControlState.Selected)
+            button.addTarget(self, action: #selector(self.buttonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            button.tag = 1000 + i
+            if i % 2 == 0{
+                button.backgroundColor = UIColor.whiteColor()
+            }
+            header.addSubview(button)
+        }
+        header.bounces = false
         header.backgroundColor = UIColor.brownColor()
-        header.registerNib(UINib.init(nibName: "TitleCell", bundle: nil), forCellWithReuseIdentifier: "TitleCell")
         //设置横向滚动条隐藏
         header.showsHorizontalScrollIndicator = false
+        header.contentSize = CGSizeMake(CGFloat(self.titleArr.count) * btnW, 0)
         return header
-        
     }()
+    // MARK: - 标题点击事件
+    func buttonClicked(button:UIButton) -> Void {
+        print("tag = \(button.tag); 下表: = \((button.tag - 1000) % 6); x = \((CGFloat(button.tag - 1000) % 6) * btnW)")
+        UIView.animateWithDuration(0.25) {
+            self.sliderView.mj_x = (CGFloat(button.tag - 1000) % 6) * btnW
+        }
+    }
+    
     
     // MARK: - 展示内容视图
     lazy var contentView:UICollectionView = {
@@ -44,7 +67,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         contentView.registerClass(HeadlineCell.self, forCellWithReuseIdentifier: "HeadlineCell")
         contentView.registerClass(RecCell.self, forCellWithReuseIdentifier: "RecCell")
         contentView.registerClass(EnterCell.self, forCellWithReuseIdentifier: "EnterCell")
-        
         contentView.contentOffset = CGPointZero
         contentView.bounces = false
         contentView.delegate = self
@@ -56,23 +78,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // MARK: - 页面加载
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.view.userInteractionEnabled = true
         btnW = Scr_W / 6
         self.view.backgroundColor = UIColor.whiteColor()
         self.makeNavi()
-        self.loadData()
         self.makeHeadView()
+        self.contentView.reloadData()
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
     //MARK: - 创建头视图
     func makeHeadView() -> Void {
         let head = UIView.init(frame: CGRectMake(0, 64, Scr_W, btnH + 3))
@@ -80,7 +92,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.sliderView.backgroundColor = UIColor.blueColor()
         head.addSubview(self.sliderView)
         head.addSubview(self.contentHead)
-        //        head.backgroundColor = UIColor.orangeColor()
+        //head.backgroundColor = UIColor.orangeColor()
         
         // 添加下面的灰色的线
         let view = UIView.init(frame: CGRectMake(0, head.mj_h - 1, Scr_W, 1))
@@ -88,22 +100,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         head.addSubview(view)
         self.view.addSubview(head)
     }
-    
-    // MARK: - 网络请求
-    func loadData() -> Void {
-        
-        HDManager.startLoading()
-        TitleModel.requestTitleData { (titleArr, error) in
-            self.titleArray.addObjectsFromArray(titleArr!)
-            self.contentHead.reloadData()
-            
-            self.contentView.reloadData()
-            
-        }
-        HDManager.stopLoading()
-        
-    }
-    
     // MARK: - 定制 导航条
     func makeNavi() -> Void {
         self.navigationController?.navigationBar.barTintColor = NavColor
@@ -128,7 +124,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let me = MeViewController()
         self.navigationController?.pushViewController(me, animated: true)
     }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -137,19 +132,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //MARK: - UICollectionView 协议方法
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if collectionView == self.contentHead{
-//            return titleArray.count
-//        }
-        return 4
+        return self.titleArr.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-//        if collectionView == self.contentHead{
-//            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TitleCell", forIndexPath: indexPath) as! TitleCell
-//            let model = titleArray[indexPath.row] as! TitleModel
-//            cell.titleL.text = model.name
-//            cell.titleL.sizeToFit()
-//            return cell
-//        }
+        
         var cellID = ""
         if indexPath.item == 0{
             cellID = "HeadlineCell"
@@ -160,18 +146,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }else if indexPath.item == 3{
             cellID = "ScienceCell"
         }
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! HeadlineCell
-        if indexPath.row == 0{
-            cell.delegate = self
-        
+        let  cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath)
+        if indexPath.item == 0{
+            let cell1 = cell as! HeadlineCell
+            cell1.delegate = self
+        }else if indexPath.item == 3{
+            let cell2 = cell as! ScienceCell
+            cell2.delegate = self
         }
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//        if collectionView == self.contentHead{
-//            return CGSizeMake(self.btnW, self.btnH)
-//        }
+        //        if collectionView == self.contentHead{
+        //            return CGSizeMake(self.btnW, self.btnH)
+        //        }
         return CGSizeMake(collectionView.mj_w, collectionView.mj_h)
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
@@ -183,21 +172,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if collectionView == self.contentHead{
-            print("标题 = \((self.titleArray[indexPath.row] as! TitleModel).name)")
-            UIView.animateWithDuration(0.25) {
-                self.sliderView.mj_x = btnW * (CGFloat(indexPath.row) % 6)
-            }
-        }
+        
         
     }
+    
+    
+    
+    
 }
 
 extension ViewController: ShowDetail{
     func showDetailView(web:DetailViewController){
         self.navigationController?.pushViewController(web, animated: true)
     }
-
+    
 }
 
 

@@ -20,6 +20,7 @@ class HeadlineCell: UICollectionViewCell {
     var contentArr = NSMutableArray()
     lazy var headView:UIView = {
         let view = UIView.init(frame: CGRectMake(0, 0, Scr_W,SrcollView_H))
+        print("赋值前:\(self.bannerArray.count) ")
         let scrollView = MyScrollView.init(frame: CGRectMake(0, 0, view.mj_w,view.mj_h), arr: self.bannerArray, isTimer: true)
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.delegator = self
@@ -60,19 +61,30 @@ class HeadlineCell: UICollectionViewCell {
     }
     // MARK: - 网络加载数据
     func loadData() -> Void {
-        HDManager.startLoading()
-        BannerModel.requestBannerData { (array, error) in
-            self.bannerArray.addObjectsFromArray(array!)
-            print(00000000000000000)
-        }
-        ContentModel.requestData { (array, error) in
-            self.contentArr.addObjectsFromArray(array!)
-            print(111111111111111111)
-            self.tableView.reloadData()
-            print("count = \(self.contentArr.count)")
-        }
+        //        let url = "http://reader.meizu.com/android/unauth/index/latest_articles.do?articleId=122614556&supportSDK=16&putdate=1474439444000&columnIds=34_1_2_19_20_16_4_37_5_14_9_18_10_7_3&deviceType=MX4&v=2820&operator=46007&nt=wifi&vn=2.8.20&deviceinfo=VpE0Ek7u0%2B%2BdlqU%2FcanUjJ27f1Y4WsSeqm2UCIaGYVU0Pm%2BQ0EwXd4AA%2B%2BJqHfOYqEDbY556tFNcvAw2x7fg5ceJz2LUAHlGzN1l1iDvOZ6SwBIPS72t46y2BiG9Y81X4jRLrhwunhrL3fnkWEuUYkUv%2FxkYfAqSjMC1S0Wcd0c%3D&os=5.1-1469416338_stable"
         
-        HDManager.stopLoading()
+        let url = "http://reader.meizu.com/android/unauth/index/latest_articles.do?articleId=122708732&supportSDK=16&putdate=1474588053000&columnIds=34_1_2_19_20_16_4_37_5_14_9_18_10_7_3_25_23_15_40_41_17_24_26_29_28_30_31_32_21_6&deviceType=MX4&v=2820&operator=46007&nt=wifi&vn=2.8.20&deviceinfo=TD0FxRLgnTr%2FKSlvzaoH%2B0IWG0uV53nTTGKHI68jUHezpZyAXOHYUyswalmpjtGYug1RGYtF4K6OELXz7U5ucKlZfH9PHvV%2BYNrlMOn%2BS5nmOOq4N%2B3mEem%2Bz7HLUN7xiYxfcA7Ea2KxY4lkphp3z%2Fi%2FddTMaH61v9j61JHVqso%3D&os=5.1-1469416338_stable"
+        
+        HDManager.startLoading()
+        print("出错前前")
+        BannerModel.requestBannerData { (array, error) in
+            if error == nil{
+                print("出错前")
+                self.bannerArray.addObjectsFromArray(array!)
+                print("滚动条数据:= \(self.bannerArray.count)")
+            }
+            HDManager.stopLoading()
+        }
+        HDManager.startLoading()
+        ContentModel.requestData(url) { (array, error) in
+            if error == nil {
+                self.contentArr.addObjectsFromArray(array!)
+                print("头条页面数据: = \(self.contentArr.count)")
+                print(111111111111111111)
+                self.tableView.reloadData()
+            }
+            HDManager.stopLoading()
+        }
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -97,7 +109,7 @@ extension HeadlineCell:UITableViewDelegate, UITableViewDataSource{
         let model = self.contentArr[indexPath.row] as! ContentModel
         cell.imgView.sd_setImageWithURL(NSURL.init(string: model.imgUrlList.lastObject as! String))
         cell.titleL.text = model.title
-        cell.contentCountL.text = "\(model.commentCount)" + "人看过"
+        cell.contentCountL.text = "\(model.pv)" + "人看过"
         return cell
     }
     
