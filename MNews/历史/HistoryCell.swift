@@ -1,14 +1,14 @@
 //
-//  HotCell.swift
+//  HistoryCell.swift
 //  MNews
 //
-//  Created by qianfeng on 16/9/23.
+//  Created by qianfeng on 16/9/24.
 //  Copyright © 2016年 qianfeng. All rights reserved.
 //
 
 import UIKit
 
-class HotCell: UICollectionViewCell {
+class HistoryCell: UICollectionViewCell {
     
     // 代理指针
     weak var delegate:ShowDetail?
@@ -53,7 +53,7 @@ class HotCell: UICollectionViewCell {
     
     //MARK: - 网络加载
     func loadData() -> Void{
-        let preArg = "channelId=5572a109b3cdc86cf39001e3&page="
+        let preArg = "channelId=5572a109b3cdc86cf39001e4&page="
         let behArg = "&needContent=0&needHtml=0"
         let httpArg = String.init(format: "%@%d%@", preArg,self.page,behArg)
         HDManager.startLoading()
@@ -63,14 +63,13 @@ class HotCell: UICollectionViewCell {
                     self.dataArr.removeAllObjects()
                 }
                 self.dataArr.addObjectsFromArray(array!)
-                print("互联网最新 :\(self.dataArr.count)")
+                print("房产最新 :\(self.dataArr.count)")
                 self.tableView.reloadData()
                 self.tableView.header.endRefreshing()
                 self.tableView.footer.endRefreshing()
             }
             HDManager.stopLoading()
         }
-        
     }
     
     
@@ -80,7 +79,7 @@ class HotCell: UICollectionViewCell {
 }
 
 //MARK: - UITableView 协议方法
-extension HotCell: UITableViewDelegate, UITableViewDataSource{
+extension HistoryCell: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataArr.count
@@ -132,4 +131,5 @@ extension HotCell: UITableViewDelegate, UITableViewDataSource{
         }
         return Content_H / 6
     }
+    
 }

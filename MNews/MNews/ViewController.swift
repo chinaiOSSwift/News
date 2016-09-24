@@ -74,17 +74,29 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         contentView.pagingEnabled = true
         //注册界面
         
-        contentView.registerClass(HeadlineCell.self, forCellWithReuseIdentifier: "HeadlineCell") // 头条
-        contentView.registerClass(RecCell.self, forCellWithReuseIdentifier: "RecCell") // 推荐
-        contentView.registerClass(EnterCell.self, forCellWithReuseIdentifier: "EnterCell") // 娱乐
-        contentView.registerClass(ScienceCell.self, forCellWithReuseIdentifier: "ScienceCell") // 科技
-        contentView.registerClass(BeautyCell.self, forCellWithReuseIdentifier: "BeautyCell") // 美女
-        contentView.registerClass(SubCell.self, forCellWithReuseIdentifier: "SubCell") // 订阅
-        contentView.registerClass(FunnyCell.self, forCellWithReuseIdentifier: "FunnyCell") // // 搞笑
-        contentView.registerClass(SocialCell.self, forCellWithReuseIdentifier: "SocialCell") // 社会
-        contentView.registerClass(HotCell.self, forCellWithReuseIdentifier: "HotCell") // 热点
-        contentView.registerClass(SportCell.self, forCellWithReuseIdentifier: "SportCell") // 体育
-        contentView.registerClass(FocusCell.self, forCellWithReuseIdentifier: "FocusCell") // 焦点
+        contentView.registerClass(HeadlineCell.self, forCellWithReuseIdentifier: "HeadlineCell") // 1头条
+        contentView.registerClass(RecCell.self, forCellWithReuseIdentifier: "RecCell") //2 国际
+        contentView.registerClass(EnterCell.self, forCellWithReuseIdentifier: "EnterCell") //3 娱乐
+        contentView.registerClass(ScienceCell.self, forCellWithReuseIdentifier: "ScienceCell") //4 科技
+        contentView.registerClass(BeautyCell.self, forCellWithReuseIdentifier: "BeautyCell") //5 美女
+        contentView.registerClass(SubCell.self, forCellWithReuseIdentifier: "SubCell") //6 教育
+        contentView.registerClass(FunnyCell.self, forCellWithReuseIdentifier: "FunnyCell") // 7 CBA最新
+        contentView.registerClass(SocialCell.self, forCellWithReuseIdentifier: "SocialCell") //8 社会
+        contentView.registerClass(HotCell.self, forCellWithReuseIdentifier: "HotCell") //9 互联网
+        contentView.registerClass(SportCell.self, forCellWithReuseIdentifier: "SportCell") //10 体育
+        contentView.registerClass(FocusCell.self, forCellWithReuseIdentifier: "FocusCell") //11 国内
+        
+        contentView.registerClass(FinanceCell.self, forCellWithReuseIdentifier: "FinanceCell") //12 财经
+        contentView.registerClass(MilitaryCell.self, forCellWithReuseIdentifier: "MilitaryCell") //13 军事
+        contentView.registerClass(HistoryCell.self, forCellWithReuseIdentifier: "HistoryCell") //14 房产
+        contentView.registerClass(CarCell.self, forCellWithReuseIdentifier: "CarCell") //15 汽车
+        contentView.registerClass(HealthHCell.self, forCellWithReuseIdentifier: "HealthHCell") //16 健康
+        contentView.registerClass(SexesCell.self, forCellWithReuseIdentifier: "SexesCell") //17 两性
+        contentView.registerClass(MovieCell.self, forCellWithReuseIdentifier: "MovieCell") //18 影视
+        contentView.registerClass(SeriesCell.self, forCellWithReuseIdentifier: "SeriesCell") // 19电视剧
+        contentView.registerClass(GameCell.self, forCellWithReuseIdentifier: "GameCell") //20 游戏
+        
+        
         
         contentView.contentOffset = CGPointZero
         contentView.bounces = false
@@ -155,57 +167,102 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cellID = "FocusCell"
-        if indexPath.item == 0{  // 头条
+        if indexPath.item == 0{  // 1 头条
             cellID = "HeadlineCell"
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! HeadlineCell
             cell.delegate = self
             return cell
-        }else if indexPath.item == 1{  //还没指点代理 // 推荐
+        }else if indexPath.item == 1{  //2 国际最新
             cellID = "RecCell"
             let  cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! RecCell
             cell.delegate = self
             return cell
-        }else if indexPath.item == 2{  // 2222 // 娱乐
+        }else if indexPath.item == 2{  //3 娱乐
             cellID = "EnterCell"
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! EnterCell
             cell.delegate = self
             return cell
-        }else if indexPath.item == 3{ // 科技
+        }else if indexPath.item == 3{ //4 科技
             cellID = "ScienceCell"
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! ScienceCell
             cell.delegate = self
             return cell
-        }else if indexPath.item == 4{ // 美女
+        }else if indexPath.item == 4{ //5 美女
             cellID = "BeautyCell"
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! BeautyCell
             return cell
             
-        }else if indexPath.item == 5{ // 订阅
+        }else if indexPath.item == 5{ //6 教育
             cellID = "SubCell"
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! SubCell
             return cell
-        }else if indexPath.item == 6{ // 搞笑
+        }else if indexPath.item == 6{ //7 CBA最新
             cellID = "FunnyCell"
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! FunnyCell
             cell.delegate = self
             return cell
-        }else if indexPath.item == 7{ // 社会
+        }else if indexPath.item == 7{ //8 社会
             cellID = "SocialCell"
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! SocialCell
             cell.delegate = self
             return cell
-        }else if indexPath.item == 8{ // 热点
+        }else if indexPath.item == 8{ //9 互联网
             cellID = "HotCell"
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! HotCell
             return cell
-        }else if indexPath.item == 9{ // 体育
+        }else if indexPath.item == 9{ //10 体育
             cellID = "SportCell"
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! SportCell
             cell.delegate = self
             return cell
-        }else{ // 焦点
+        }else if indexPath.item == 10{ //11 国内
             cellID = "FocusCell"
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! FocusCell
+            cell.delegate = self
+            return cell
+        }else if indexPath.item == 11{ //12 财经
+            cellID = "FinanceCell"
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! FinanceCell
+            cell.delegate = self
+            return cell
+        }else if indexPath.item == 12{ //13 军事
+            cellID = "MilitaryCell"
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! MilitaryCell
+            cell.delegate = self
+            return cell
+        }else if indexPath.item == 13{ //14 房产
+            cellID = "HistoryCell"
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! HistoryCell
+            cell.delegate = self
+            return cell
+        }else if indexPath.item == 14{ //15 汽车
+            cellID = "CarCell"
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! CarCell
+            cell.delegate = self
+            return cell
+        }else if indexPath.item == 15{ //16 健康
+            cellID = "HealthHCell"
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! HealthHCell
+            cell.delegate = self
+            return cell
+        }else if indexPath.item == 16{ //17 两性
+            cellID = "SexesCell"
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! SexesCell
+            cell.delegate = self
+            return cell
+        }else if indexPath.item == 17{ //18 影视
+            cellID = "MovieCell"
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! MovieCell
+            cell.delegate = self
+            return cell
+        }else if indexPath.item == 18{ //19 电视剧
+            cellID = "SeriesCell"
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! SeriesCell
+            cell.delegate = self
+            return cell
+        }else{ //20 游戏
+            cellID = "GameCell"
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! GameCell
             cell.delegate = self
             return cell
         }

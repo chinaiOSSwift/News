@@ -47,7 +47,7 @@ class FocusCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.backgroundColor = UIColor.blueColor()
+        self.contentView.backgroundColor = UIColor.whiteColor()
         self.loadData()
     }
     

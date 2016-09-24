@@ -14,51 +14,66 @@ class ScienceCell: UICollectionViewCell {
     weak var delegate:ShowDetail?
     //数据源
     var dataArr = NSMutableArray()
-    
+    var page:NSInteger = 1
+    var flag:Bool = false
     lazy var tableView:UITableView = {
-        let tableView = UITableView.init(frame: CGRectMake(0, 0, Scr_W, Content_H))
+        let tableView = UITableView.init(frame: CGRectMake(0, 0, Scr_W, Content_H + btnH))
         tableView.backgroundColor = UIColor.whiteColor()
-        tableView.registerNib(UINib.init(nibName: "SciCell", bundle: nil), forCellReuseIdentifier: "SciCell")
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.bounces = false
+        tableView.bounces = true
+        tableView.registerNib(UINib.init(nibName: "BaseZeroCell", bundle: nil), forCellReuseIdentifier: "BaseZeroCell")
+        tableView.registerNib(UINib.init(nibName: "BaseModelOneCell", bundle: nil), forCellReuseIdentifier: "BaseModelOneCell")
+        tableView.registerNib(UINib.init(nibName: "BaseModelTwoCell", bundle: nil), forCellReuseIdentifier: "BaseModelTwoCell")
+        tableView.registerNib(UINib.init(nibName: "BaseModelThreeCell", bundle: nil), forCellReuseIdentifier: "BaseModelThreeCell")
+        
+        tableView.header = MJRefreshNormalHeader.init(refreshingBlock: {
+            self.page = 1
+            self.flag = true
+            self.loadData()
+        })
+        tableView.footer = MJRefreshAutoFooter.init(refreshingBlock: {
+            self.page += 1
+            self.flag = false
+            self.loadData()
+        })
         tableView.backgroundColor = ContentColor
         self.contentView.addSubview(tableView)
         return tableView
         
     }()
     
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.contentView.backgroundColor = UIColor.whiteColor()
-        
-        self.dataLoad()
+        self.loadData()
     }
-    // MARK: - 网络请求
-    func dataLoad() -> Void {
-        
     
-        let date = NSDate.init(timeIntervalSince1970: 1474546734000)
-        let formate = NSDateFormatter.init()
-        formate.dateFormat = "YYYY-MM-dd HH:mm:ss"
-        print(date)
-        let interval = NSTimeIntervalSince1970
-        print(interval)
-        
-    
-//        let url = "http://reader.meizu.com/android/unauth/columns/article/refresh.do?lastTime=1474546734000&articleId=122727898&columnId=2&v=2820&operator=46007&nt=wifi&vn=2.8.20&deviceinfo=wmwPl%2B1aYe0hhHiQsGeqU603kp6E2PesAc7Rt6p34d57Blxcma25kZTyFu7VjL88G2yVvAKuy177NdJ5d%2FAL2X%2Bvf2OKDL8PH%2B7xOH%2FHALhnf4jOd40m9giVbv4nchM2jFxiU6AV726Xn8nteKdOjyJmkIFJqYeGzlvCbP0ehX8%3D&os=5.1-1469416338_stable"
-        let url = "http://reader.meizu.com/android/unauth/columns/article/list.do?columnId=2&v=2820&operator=46007&nt=wifi&vn=2.8.20&deviceinfo=WKEkCva5gyfS5gI67r6trHzh924ZeVQlpXJ2s6sAGq4QZyKfeYQw%2BeA%2FItDLshKe%2FHN5lfQmn4qR94II2GtNqn77%2F%2BS5en1unDDorJvI%2B5tz4LZoH5ICxuuDsfm1Ih87%2FBgU7HuKroipF1U1DBibVvnbo68lRff2%2B2I9FNPHTGc%3D&os=5.1-1469416338_stable"
+    //MARK: - 网络加载
+    func loadData() -> Void{
+        let preArg = "channelId=5572a10ab3cdc86cf39001f4&page="
+        let behArg = "&needContent=0&needHtml=0"
+        let httpArg = String.init(format: "%@%d%@", preArg,self.page,behArg)
         HDManager.startLoading()
-        ContentModel.requestData(url) { (array, error) in
-            if error == nil {
+        BaseModel.requestBaseDtat(HOME_URL: HOME_URL, httpArg: httpArg) { (array, error) in
+            if error == nil{
+                if self.flag == true{
+                    self.dataArr.removeAllObjects()
+                }
                 self.dataArr.addObjectsFromArray(array!)
-                print("科技页面数据: = \(self.dataArr.count)")
+                print("科技最新数据 :\(self.dataArr.count)")
                 self.tableView.reloadData()
+                self.tableView.header.endRefreshing()
+                self.tableView.footer.endRefreshing()
             }
             HDManager.stopLoading()
         }
         
     }
+    
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -72,32 +87,49 @@ extension ScienceCell: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("SciCell", forIndexPath: indexPath) as! SciCell
-        let model = self.dataArr[indexPath.row] as! ContentModel
-        print("科技 = \(model.imgUrlList.count) \(String(model.imgUrlList.firstObject))")
-        if model.imgUrlList.firstObject != nil || model.imgUrlList.count != 0{
-            cell.iconView?.sd_setImageWithURL(NSURL.init(string:  String(model.imgUrlList.firstObject!)))
-            
+        let model = self.dataArr[indexPath.row] as! BaseModel
+        var cellID = "BaseZeroCell"
+        
+        if model.imageurls?.count == 1{ // 一张图片
+            cellID = "BaseModelOneCell"
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! BaseModelOneCell
+            cell.customCellWithModel(model)
+            return cell
+        }else if model.imageurls?.count == 2{ // 两张图片
+            cellID = "BaseModelTwoCell"
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! BaseModelTwoCell
+            cell.customCellWithModel(model)
+            return cell
+        }else if model.imageurls?.count == 3{ // 三张图片
+            cellID = "BaseModelThreeCell"
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! BaseModelThreeCell
+            cell.customCellWithModel(model)
+            return cell
+        }else{
+            // 没有图片
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! BaseZeroCell
+            cell.customCellWithDic(model)
+            return cell
         }
-        cell.titleL.text = model.title
-        cell.contentCountL.text = "\(model.pv)" + "人看过"
-        cell.contentSourceL.text = model.contentSourceName
-        return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         // 当点击的时候下载相对应的 json 文件
-        let model = self.dataArr[indexPath.row] as! ContentModel
+        let model = self.dataArr[indexPath.row] as! BaseModel
         let web = DetailViewController()
-        web.url = PaseFile.paseFile(model.articleUrl)
+        web.url = model.link
         self.delegate?.showDetailView(web)
         
         
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let model = self.dataArr[indexPath.row] as! BaseModel
+        if model.imageurls?.count == 3 || model.imageurls?.count == 2{
+            return 180
+        }
         return Content_H / 6
     }
     

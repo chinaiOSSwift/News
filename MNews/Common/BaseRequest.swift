@@ -39,9 +39,8 @@ extension BaseModel{
         NSURLConnection.sendAsynchronousRequest(req, queue: NSOperationQueue.mainQueue()) {
             (response, data, error) -> Void in
             if error == nil{
-                
-                let str = NSString.init(data: data!, encoding: NSUTF8StringEncoding)
-                print(str!)
+//                let str = NSString.init(data: data!, encoding: NSUTF8StringEncoding)
+//                print(str!)
                 
                 let obj = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                 let array = ((obj["showapi_res_body"] as! NSDictionary)["pagebean"] as! NSDictionary)["contentlist"] as? [AnyObject]

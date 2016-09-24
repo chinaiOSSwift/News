@@ -44,19 +44,19 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TkX-gm-b1v">
-                        <rect key="frame" x="0.0" y="8" width="127" height="72"/>
+                        <rect key="frame" x="8" y="8" width="127" height="72"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="127" id="Fwr-Gc-CpG"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kbd-gr-ngr">
-                        <rect key="frame" x="135" y="8" width="127" height="72"/>
+                        <rect key="frame" x="143" y="8" width="127" height="72"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="127" id="ob2-ih-nE8"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QAL-z1-Ljr">
-                        <rect key="frame" x="270" y="8" width="136" height="72"/>
+                        <rect key="frame" x="278" y="8" width="128" height="72"/>
                     </imageView>
                 </subviews>
                 <constraints>
@@ -75,7 +75,7 @@
                     <constraint firstItem="hKU-aJ-Zi0" firstAttribute="top" secondItem="kbd-gr-ngr" secondAttribute="bottom" constant="10" id="jZa-ef-eV7"/>
                     <constraint firstItem="EHG-RZ-0p7" firstAttribute="top" secondItem="hKU-aJ-Zi0" secondAttribute="bottom" constant="8" id="jm6-eI-NSj"/>
                     <constraint firstItem="4lf-A2-qDt" firstAttribute="leading" secondItem="EHG-RZ-0p7" secondAttribute="trailing" constant="5" id="l3P-Zm-Woo"/>
-                    <constraint firstItem="TkX-gm-b1v" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="r2L-ld-d98"/>
+                    <constraint firstItem="TkX-gm-b1v" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="r2L-ld-d98"/>
                     <constraint firstItem="kbd-gr-ngr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="tiW-fl-Rte"/>
                 </constraints>
             </tableViewCellContentView>
