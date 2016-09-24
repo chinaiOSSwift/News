@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+//5572a10ab3cdc86cf39001f4
 class ScienceCell: UICollectionViewCell {
     
     // 代理指针

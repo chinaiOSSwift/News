@@ -31,9 +31,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7777人看过" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oS-dj-yR2">
-                        <rect key="frame" x="75" y="71" width="80" height="23"/>
+                        <rect key="frame" x="75" y="71" width="150" height="23"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="80" id="LJU-52-ms8"/>
+                            <constraint firstAttribute="width" constant="150" id="LJU-52-ms8"/>
                             <constraint firstAttribute="height" constant="23" id="msN-fF-dbP"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>

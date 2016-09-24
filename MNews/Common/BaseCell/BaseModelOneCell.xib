@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="BaseModelOneCell" customModule="MNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="149"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新华日报" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFq-Wi-7c3">
+                        <rect key="frame" x="10" y="121" width="60" height="23"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="23" id="Vpg-lb-yy1"/>
+                            <constraint firstAttribute="width" constant="60" id="pZ7-8E-Z16"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发布日期" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXM-W0-YYL">
+                        <rect key="frame" x="75" y="121" width="150" height="23"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="56B-Vk-cee"/>
+                            <constraint firstAttribute="height" constant="23" id="uRb-cR-RLb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wpc-xs-68L">
+                        <rect key="frame" x="235" y="8" width="171" height="136"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vlu-J2-mmG">
+                        <rect key="frame" x="10" y="10" width="217" height="106"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Vlu-J2-mmG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="4aW-39-p7R"/>
+                    <constraint firstItem="gFq-Wi-7c3" firstAttribute="top" secondItem="Vlu-J2-mmG" secondAttribute="bottom" constant="5" id="7Pe-G8-Au5"/>
+                    <constraint firstItem="Wpc-xs-68L" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="HQt-sW-BKs"/>
+                    <constraint firstItem="Vlu-J2-mmG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="HWo-KN-PqU"/>
+                    <constraint firstItem="gFq-Wi-7c3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Ktl-Pp-8Tf"/>
+                    <constraint firstItem="Wpc-xs-68L" firstAttribute="leading" secondItem="Vlu-J2-mmG" secondAttribute="trailing" constant="8" id="N7p-As-mwl"/>
+                    <constraint firstItem="Wpc-xs-68L" firstAttribute="leading" secondItem="dXM-W0-YYL" secondAttribute="trailing" constant="10" id="Sg2-g6-52b"/>
+                    <constraint firstAttribute="bottom" secondItem="Wpc-xs-68L" secondAttribute="bottom" constant="5" id="aMR-E1-9PE"/>
+                    <constraint firstAttribute="bottom" secondItem="gFq-Wi-7c3" secondAttribute="bottom" constant="5" id="cSf-kw-j1q"/>
+                    <constraint firstAttribute="bottom" secondItem="dXM-W0-YYL" secondAttribute="bottom" constant="5" id="cn5-W9-sev"/>
+                    <constraint firstAttribute="trailing" secondItem="Wpc-xs-68L" secondAttribute="trailing" constant="8" id="en5-Jv-TP5"/>
+                    <constraint firstItem="dXM-W0-YYL" firstAttribute="leading" secondItem="gFq-Wi-7c3" secondAttribute="trailing" constant="5" id="lnn-fp-Wql"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imageView1" destination="Wpc-xs-68L" id="XPz-dR-6fe"/>
+                <outlet property="pubDateL" destination="dXM-W0-YYL" id="pWu-LZ-uHI"/>
+                <outlet property="sourceL" destination="gFq-Wi-7c3" id="MIF-pM-KEa"/>
+                <outlet property="titleL" destination="Vlu-J2-mmG" id="PEW-ER-Scz"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

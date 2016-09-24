@@ -8,6 +8,80 @@
 
 import UIKit
 
+// MARK: - 基础模型
+class BaseModel:JSONModel{
+    var imageurls:[[String:AnyObject]]?
+    var link:String!
+    var pubDate:String!
+    var source:String!
+    var title:String!
+    
+    class func modelWithDic(dic:[String:AnyObject]) -> BaseModel{
+        let model = BaseModel()
+        model.imageurls = dic["imageurls"] as? [[String:AnyObject]]
+        model.link = dic["link"] as! String
+        model.pubDate = dic["pubDate"] as! String
+        model.source = dic["source"] as! String
+        model.title = dic["title"] as! String
+        return model
+    }
+}
+
+// MARK: - 针对基础模型的网络请求
+extension BaseModel{
+
+    class func  requestBaseDtat(HOME_URL httpUrl: String, httpArg: String,callBack:(array:[AnyObject]?,error:NSError?) -> Void)->Void {
+        let req = NSMutableURLRequest(URL: NSURL(string: httpUrl + "?" + httpArg)!)
+        req.timeoutInterval = 6
+        req.HTTPMethod = "GET"
+        req.addValue(apikey, forHTTPHeaderField: "apikey")
+        //        print("请求的网址: \(req)")
+        NSURLConnection.sendAsynchronousRequest(req, queue: NSOperationQueue.mainQueue()) {
+            (response, data, error) -> Void in
+            if error == nil{
+                
+                let str = NSString.init(data: data!, encoding: NSUTF8StringEncoding)
+                print(str!)
+                
+                let obj = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                let array = ((obj["showapi_res_body"] as! NSDictionary)["pagebean"] as! NSDictionary)["contentlist"] as? [AnyObject]
+                let models:NSMutableArray = NSMutableArray()
+                if array?.count > 0{
+                    for dic in (array as! [[String:AnyObject]]){
+                        models.addObject(BaseModel.modelWithDic(dic))
+                    }
+                }
+                dispatch_async(dispatch_get_main_queue(), {
+                    callBack(array: models as [AnyObject], error: nil)
+                })
+            }else{
+                dispatch_async(dispatch_get_main_queue(), {
+                    callBack(array: nil, error: error)
+                })
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // MARK: - 公用的数据模型
@@ -147,6 +221,11 @@ extension ContentModel{
     }
     
 }
+
+
+
+
+
 
 
 

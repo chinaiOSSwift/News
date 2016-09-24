@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+let apikey = "f305aabb6345c0bd6d7712143c1bbf5f"
+let HOME_URL = "http://apis.baidu.com/showapi_open_bus/channel_news/search_news"
+
 let NavColor:UIColor = UIColor.init(red: 65 / 255.0, green: 108 / 255.0, blue: 233 / 255.0, alpha: 1.0)
 let ContentColor:UIColor = UIColor.init(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
 

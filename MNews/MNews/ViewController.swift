@@ -8,20 +8,22 @@
 
 import UIKit
 
+
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     
     var sliderView:UIView! // 小滑块
     var titleArr = [String]()
     var titleCollectionView:UICollectionView!
+    var preIndex:NSInteger = 0
     
     lazy var contentHead:UIScrollView = {
         let path = NSBundle.mainBundle().pathForResource("TitleList", ofType: "plist")
         self.titleArr = NSArray.init(contentsOfFile: path!) as! [String]
         let header = UIScrollView.init(frame: CGRectMake(0, 0, Scr_W, btnH))
         for i in 0..<self.titleArr.count{
-            let button = UIButton.init(type: .System)
+            let button = UIButton.init(type: UIButtonType.Custom)  // 要用自定义的 否则会有一个蓝色的背景框
             button.frame = CGRectMake(btnW * CGFloat(i), 0, btnW, btnH)
-            button.backgroundColor = UIColor.redColor()
             button.setTitle(self.titleArr[i], forState: UIControlState.Normal)
             button.setTitle(self.titleArr[i], forState: UIControlState.Highlighted)
             button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
@@ -30,13 +32,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             button.setTitleColor(NavColor, forState: UIControlState.Selected)
             button.addTarget(self, action: #selector(self.buttonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             button.tag = 1000 + i
-            if i % 2 == 0{
-                button.backgroundColor = UIColor.whiteColor()
+            if button.tag == 1000{
+                button.selected = true
             }
             header.addSubview(button)
         }
         header.bounces = false
-        header.backgroundColor = UIColor.brownColor()
+        header.backgroundColor = UIColor.whiteColor()
         //设置横向滚动条隐藏
         header.showsHorizontalScrollIndicator = false
         header.contentSize = CGSizeMake(CGFloat(self.titleArr.count) * btnW, 0)
@@ -44,10 +46,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }()
     // MARK: - 标题点击事件
     func buttonClicked(button:UIButton) -> Void {
-        print("tag = \(button.tag); 下表: = \((button.tag - 1000) % 6); x = \((CGFloat(button.tag - 1000) % 6) * btnW)")
+        (self.contentHead.viewWithTag(preIndex + 1000) as! UIButton).selected = false
+        let buttonTag:NSInteger = button.tag - 1000
+        button.selected = true
+        self.preIndex = buttonTag
+        print("tag = \(button.tag); 下表: = \(buttonTag % 6); x = \(buttonTag % 6) * btnW)")
         UIView.animateWithDuration(0.25) {
-            self.sliderView.mj_x = (CGFloat(button.tag - 1000) % 6) * btnW
+            self.sliderView.mj_x = (CGFloat(button.tag - 1000) % 6 + 1) * btnW
         }
+        // 改变内容展示
+        self.contentView.setContentOffset(CGPointMake(Scr_W * CGFloat(buttonTag), 0), animated: false)
+        
+        
     }
     
     
@@ -101,7 +111,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.sliderView.backgroundColor = UIColor.blueColor()
         head.addSubview(self.sliderView)
         head.addSubview(self.contentHead)
-        //head.backgroundColor = UIColor.orangeColor()
         
         // 添加下面的灰色的线
         let view = UIView.init(frame: CGRectMake(0, head.mj_h - 1, Scr_W, 1))
@@ -143,59 +152,63 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.titleArr.count
     }
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = UICollectionViewCell()
-        var cellID = ""
+        var cellID = "FocusCell"
         if indexPath.item == 0{  // 头条
             cellID = "HeadlineCell"
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! HeadlineCell
-            let cell1 = cell as! HeadlineCell
-            cell1.delegate = self
-            
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! HeadlineCell
+            cell.delegate = self
+            return cell
         }else if indexPath.item == 1{  //还没指点代理 // 推荐
             cellID = "RecCell"
-           cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! RecCell
-            let cell1 = cell as! RecCell
-            cell1.delegate = self
+            let  cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! RecCell
+            cell.delegate = self
+            return cell
         }else if indexPath.item == 2{  // 2222 // 娱乐
             cellID = "EnterCell"
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! EnterCell
-            let cell1 = cell as! EnterCell
-            cell1.delegate = self
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! EnterCell
+            cell.delegate = self
+            return cell
         }else if indexPath.item == 3{ // 科技
             cellID = "ScienceCell"
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! ScienceCell
-            let cell2 = cell as! ScienceCell
-            cell2.delegate = self
-            
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! ScienceCell
+            cell.delegate = self
+            return cell
         }else if indexPath.item == 4{ // 美女
             cellID = "BeautyCell"
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! BeautyCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! BeautyCell
+            return cell
             
         }else if indexPath.item == 5{ // 订阅
             cellID = "SubCell"
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! SubCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! SubCell
+            return cell
         }else if indexPath.item == 6{ // 搞笑
             cellID = "FunnyCell"
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! FunnyCell
-            let cell1 = cell as! FunnyCell
-            cell1.delegate = self
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! FunnyCell
+            cell.delegate = self
+            return cell
         }else if indexPath.item == 7{ // 社会
             cellID = "SocialCell"
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! SocialCell
-            let cell1 = cell as! SocialCell
-            cell1.delegate = self
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! SocialCell
+            cell.delegate = self
+            return cell
         }else if indexPath.item == 8{ // 热点
             cellID = "HotCell"
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! HotCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! HotCell
+            return cell
         }else if indexPath.item == 9{ // 体育
             cellID = "SportCell"
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! SportCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! SportCell
+            cell.delegate = self
+            return cell
         }else{ // 焦点
             cellID = "FocusCell"
-            cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! FocusCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! FocusCell
+            cell.delegate = self
+            return cell
         }
-        return cell
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -214,6 +227,27 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        (self.contentHead.viewWithTag(preIndex + 1000) as! UIButton).selected = false
+        let currentIndex = NSInteger(scrollView.contentOffset.x / Scr_W)
+        (self.contentHead.viewWithTag(currentIndex + 1000) as! UIButton).selected = true
+        self.preIndex = currentIndex
+        print("当前第 \(currentIndex) 界面")
+        
+        if scrollView.contentOffset.x > 6 * Scr_W{
+            UIView.animateWithDuration(0.25, animations: {
+                self.contentHead.setContentOffset(CGPointMake(CGFloat(currentIndex - 5) * btnW, 0), animated: true)
+            })
+            
+        }else if scrollView.contentOffset.x == CGFloat(6) * Scr_W{
+            UIView.animateWithDuration(0.25, animations: {
+                self.contentHead.setContentOffset(CGPointMake(0, 0), animated: true)
+            })
+            
+        }
+        
+        
+    }
     
     
     

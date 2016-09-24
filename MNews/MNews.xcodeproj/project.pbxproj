@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC1F630E1D9621CF00DE01D8 /* SportModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F630D1D9621CF00DE01D8 /* SportModels.swift */; };
+		BC1F63101D96237300DE01D8 /* SportModelNetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F630F1D96237300DE01D8 /* SportModelNetWork.swift */; };
+		BC1F63121D96488F00DE01D8 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F63111D96488F00DE01D8 /* BaseCell.swift */; };
+		BC1F63221D9668BD00DE01D8 /* BaseZeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F63201D9668BD00DE01D8 /* BaseZeroCell.swift */; };
+		BC1F63231D9668BD00DE01D8 /* BaseZeroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1F63211D9668BD00DE01D8 /* BaseZeroCell.xib */; };
+		BC1F63281D966CD000DE01D8 /* BaseModelOneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F63261D966CD000DE01D8 /* BaseModelOneCell.swift */; };
+		BC1F63291D966CD000DE01D8 /* BaseModelOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1F63271D966CD000DE01D8 /* BaseModelOneCell.xib */; };
+		BC1F63301D9671D700DE01D8 /* BaseModelTwoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F632E1D9671D700DE01D8 /* BaseModelTwoCell.swift */; };
+		BC1F63311D9671D700DE01D8 /* BaseModelTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1F632F1D9671D700DE01D8 /* BaseModelTwoCell.xib */; };
+		BC1F63341D96756B00DE01D8 /* BaseModelThreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F63321D96756B00DE01D8 /* BaseModelThreeCell.swift */; };
+		BC1F63351D96756B00DE01D8 /* BaseModelThreeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1F63331D96756B00DE01D8 /* BaseModelThreeCell.xib */; };
 		BC9990471D94E530002BF484 /* RecModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9990461D94E530002BF484 /* RecModels.swift */; };
 		BC9990491D94E7D7002BF484 /* RecModelNewWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9990481D94E7D7002BF484 /* RecModelNewWork.swift */; };
 		BC99904B1D951B3D002BF484 /* EnterModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99904A1D951B3D002BF484 /* EnterModels.swift */; };
@@ -98,6 +109,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC1F630D1D9621CF00DE01D8 /* SportModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportModels.swift; sourceTree = "<group>"; };
+		BC1F630F1D96237300DE01D8 /* SportModelNetWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportModelNetWork.swift; sourceTree = "<group>"; };
+		BC1F63111D96488F00DE01D8 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		BC1F63201D9668BD00DE01D8 /* BaseZeroCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseZeroCell.swift; sourceTree = "<group>"; };
+		BC1F63211D9668BD00DE01D8 /* BaseZeroCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseZeroCell.xib; sourceTree = "<group>"; };
+		BC1F63261D966CD000DE01D8 /* BaseModelOneCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModelOneCell.swift; sourceTree = "<group>"; };
+		BC1F63271D966CD000DE01D8 /* BaseModelOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseModelOneCell.xib; sourceTree = "<group>"; };
+		BC1F632E1D9671D700DE01D8 /* BaseModelTwoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModelTwoCell.swift; sourceTree = "<group>"; };
+		BC1F632F1D9671D700DE01D8 /* BaseModelTwoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseModelTwoCell.xib; sourceTree = "<group>"; };
+		BC1F63321D96756B00DE01D8 /* BaseModelThreeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModelThreeCell.swift; sourceTree = "<group>"; };
+		BC1F63331D96756B00DE01D8 /* BaseModelThreeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseModelThreeCell.xib; sourceTree = "<group>"; };
 		BC9990461D94E530002BF484 /* RecModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecModels.swift; sourceTree = "<group>"; };
 		BC9990481D94E7D7002BF484 /* RecModelNewWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecModelNewWork.swift; sourceTree = "<group>"; };
 		BC99904A1D951B3D002BF484 /* EnterModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterModels.swift; sourceTree = "<group>"; };
@@ -253,6 +275,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC1F630B1D9621A600DE01D8 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				BC1F630D1D9621CF00DE01D8 /* SportModels.swift */,
+				BC1F630F1D96237300DE01D8 /* SportModelNetWork.swift */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		BC1F630C1D9621A600DE01D8 /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		BC1F631B1D9667DC00DE01D8 /* BaseCell */ = {
+			isa = PBXGroup;
+			children = (
+				BC1F63201D9668BD00DE01D8 /* BaseZeroCell.swift */,
+				BC1F63211D9668BD00DE01D8 /* BaseZeroCell.xib */,
+				BC1F63261D966CD000DE01D8 /* BaseModelOneCell.swift */,
+				BC1F63271D966CD000DE01D8 /* BaseModelOneCell.xib */,
+				BC1F632E1D9671D700DE01D8 /* BaseModelTwoCell.swift */,
+				BC1F632F1D9671D700DE01D8 /* BaseModelTwoCell.xib */,
+				BC1F63321D96756B00DE01D8 /* BaseModelThreeCell.swift */,
+				BC1F63331D96756B00DE01D8 /* BaseModelThreeCell.xib */,
+			);
+			path = BaseCell;
+			sourceTree = "<group>";
+		};
 		BC99905C1D956662002BF484 /* M */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,10 +382,12 @@
 		BCBA821E1D9282DC008D6044 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				BC1F631B1D9667DC00DE01D8 /* BaseCell */,
 				BCBA82D31D928EF2008D6044 /* BaseRequest.swift */,
 				BCBA82D21D928BC4008D6044 /* BridgeHeader.h */,
 				BCBA821F1D928305008D6044 /* ConfigFile.swift */,
 				BCC106B91D93DEA300399353 /* PaseFile.swift */,
+				BC1F63111D96488F00DE01D8 /* BaseCell.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -716,6 +771,8 @@
 		BCBA82F21D92CA3F008D6044 /* 体育 */ = {
 			isa = PBXGroup;
 			children = (
+				BC1F630B1D9621A600DE01D8 /* M */,
+				BC1F630C1D9621A600DE01D8 /* V */,
 				BC9990581D9551EC002BF484 /* SportCell.swift */,
 			);
 			path = "体育";
@@ -891,6 +948,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC1F63231D9668BD00DE01D8 /* BaseZeroCell.xib in Resources */,
+				BC1F63351D96756B00DE01D8 /* BaseModelThreeCell.xib in Resources */,
+				BC1F63291D966CD000DE01D8 /* BaseModelOneCell.xib in Resources */,
 				BCBA82291D9286A0008D6044 /* me.png in Resources */,
 				BCC106BE1D93F4AB00399353 /* TitleList.plist in Resources */,
 				BCBA82281D9286A0008D6044 /* me@2x.png in Resources */,
@@ -900,6 +960,7 @@
 				BCBA82141D927F27008D6044 /* Assets.xcassets in Resources */,
 				BCBA82121D927F27008D6044 /* Main.storyboard in Resources */,
 				BCC106B81D93A62200399353 /* HeadCell.xib in Resources */,
+				BC1F63311D9671D700DE01D8 /* BaseModelTwoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -913,6 +974,7 @@
 				BCBA82C61D928BBC008D6044 /* SDWebImageDecoder.m in Sources */,
 				BC9990471D94E530002BF484 /* RecModels.swift in Sources */,
 				BCBA82C91D928BBC008D6044 /* SDWebImageManager.m in Sources */,
+				BC1F63281D966CD000DE01D8 /* BaseModelOneCell.swift in Sources */,
 				BCBA82FF1D92CB34008D6044 /* ScienceCell.swift in Sources */,
 				BC9990491D94E7D7002BF484 /* RecModelNewWork.swift in Sources */,
 				BCBA82A31D928BBC008D6044 /* JSONModel.m in Sources */,
@@ -928,12 +990,15 @@
 				BCBA82D41D928EF2008D6044 /* BaseRequest.swift in Sources */,
 				BCBA82C21D928BBC008D6044 /* MKAnnotationView+WebCache.m in Sources */,
 				BCBA82A51D928BBC008D6044 /* JSONModelError.m in Sources */,
+				BC1F63341D96756B00DE01D8 /* BaseModelThreeCell.swift in Sources */,
 				BCBA82AF1D928BBC008D6044 /* MJRefreshComponent.m in Sources */,
 				BCBA82F91D92CA9C008D6044 /* HeadlineCell.swift in Sources */,
 				BCBA82CE1D928BBC008D6044 /* UIImage+WebP.m in Sources */,
+				BC1F63301D9671D700DE01D8 /* BaseModelTwoCell.swift in Sources */,
 				BCBA82B91D928BBC008D6044 /* MJRefreshNormalHeader.m in Sources */,
 				BC99904F1D955137002BF484 /* BeautyCell.swift in Sources */,
 				BCBA82C41D928BBC008D6044 /* SDImageCache.m in Sources */,
+				BC1F630E1D9621CF00DE01D8 /* SportModels.swift in Sources */,
 				BCF83FA11D936197000D5D60 /* BannerModels.swift in Sources */,
 				BCBA820F1D927F27008D6044 /* ViewController.swift in Sources */,
 				BCBA82AE1D928BBC008D6044 /* MJRefreshBackFooter.m in Sources */,
@@ -943,10 +1008,12 @@
 				BCBA82CF1D928BBC008D6044 /* UIImageView+HighlightedWebCache.m in Sources */,
 				BC9990591D9551EC002BF484 /* SportCell.swift in Sources */,
 				BCBA83091D92D5F5008D6044 /* MyScrollView.swift in Sources */,
+				BC1F63221D9668BD00DE01D8 /* BaseZeroCell.swift in Sources */,
 				BCBA82B61D928BBC008D6044 /* MJRefreshBackNormalFooter.m in Sources */,
 				BCC106B71D93A62200399353 /* HeadCell.swift in Sources */,
 				BCBA82BF1D928BBC008D6044 /* UIView+MJExtension.m in Sources */,
 				BC99904D1D951B7B002BF484 /* EnterModelNetWork.swift in Sources */,
+				BC1F63121D96488F00DE01D8 /* BaseCell.swift in Sources */,
 				BC99904B1D951B3D002BF484 /* EnterModels.swift in Sources */,
 				BCBA82C01D928BBC008D6044 /* MLTransitionAnimation.m in Sources */,
 				BCBA82CC1D928BBC008D6044 /* UIImage+GIF.m in Sources */,
@@ -973,6 +1040,7 @@
 				BCBA82B41D928BBC008D6044 /* MJRefreshAutoStateFooter.m in Sources */,
 				BCBA82D11D928BBC008D6044 /* UIView+WebCacheOperation.m in Sources */,
 				BCBA820D1D927F27008D6044 /* AppDelegate.swift in Sources */,
+				BC1F63101D96237300DE01D8 /* SportModelNetWork.swift in Sources */,
 				BCBA82CA1D928BBC008D6044 /* SDWebImagePrefetcher.m in Sources */,
 				BCBA82FB1D92CAD0008D6044 /* RecCell.swift in Sources */,
 				BC9990611D9571FC002BF484 /* FunModelNetWork.swift in Sources */,
