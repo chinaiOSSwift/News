@@ -8,7 +8,11 @@
 
 import UIKit
 
+
+
 class BaseCollectionViewCell: UICollectionViewCell {
+    
+    
     
     // 代理指针
     weak var delegate:ShowDetail?
@@ -44,12 +48,16 @@ class BaseCollectionViewCell: UICollectionViewCell {
         
     }()
     
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.contentView.backgroundColor = UIColor.whiteColor()
-        self.loadData()
+        if let array = self.readLocalData(){
+            self.dataArr = NSMutableArray.init(array: array)
+//            print("第一次加载数据得到的结果 : \(self.dataArr.count)")
+            self.tableView.reloadData()
+        }else{
+            self.loadData()
+        }
     }
     
     //MARK: - 网络加载
@@ -62,16 +70,82 @@ class BaseCollectionViewCell: UICollectionViewCell {
             if error == nil{
                 if self.flag == true{
                     self.dataArr.removeAllObjects()
+                    self.writeToDataWith(array!)
                 }
                 self.dataArr.addObjectsFromArray(array!)
-                print("网络加载数据:\(self.dataArr.count)")
                 self.tableView.reloadData()
-                self.tableView.header.endRefreshing()
-                self.tableView.footer.endRefreshing()
+               
+            }else{
+                self.setNetWorkView()
             }
+            self.tableView.header.endRefreshing()
+            self.tableView.footer.endRefreshing()
             HDManager.stopLoading()
         }
     }
+    
+    // MARK: - 无网络界面
+    func setNetWorkView() -> Void {
+        
+        print("121212")
+        let url = NSURL.init(string: "prefs:root=Brightness")
+        if UIApplication.sharedApplication().canOpenURL(url!) {
+            UIApplication.sharedApplication().openURL(url!)
+            print("调用系统的设置按钮")
+        }
+        let ac = UIAlertController.init(title: "⚠️", message: "无网络连接, 请检查网络设置", preferredStyle: UIAlertControllerStyle.Alert)
+        let action = UIAlertAction.init(title: "确定", style: UIAlertActionStyle.Default) { (action) in
+            
+            let url = NSURL.init(string: "prefs:root=General")
+            if UIApplication.sharedApplication().canOpenURL(url!) {
+                UIApplication.sharedApplication().openURL(url!)
+                print("调用系统的设置按钮")
+            }
+            
+        }
+        ac.addAction(action)
+        self.delegate?.sentMessage(ac)
+        
+        
+        
+        
+        
+        
+        /*
+        let netView = UIView.init(frame:CGRectMake(0, 0, Scr_W , Scr_H - btnH))
+        netView.center = self.contentView.center
+        //        netView.backgroundColor = UIColor.redColor()
+        let imageView = UIImageView.init(frame: CGRectMake(0, 0, 50, 50))
+        imageView.mj_x = netView.center.x - 25
+        imageView.mj_y = netView.center.y - 100
+        imageView.image = UIImage.init(named: "netWork.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        //        imageView.backgroundColor = UIColor.greenColor()
+        let tipL = UILabel.init(frame: CGRectMake(0, 0, 300, 23))
+        tipL.mj_x = imageView.center.x - 150
+        tipL.mj_y = imageView.mj_y + imageView.mj_h + 5
+        //        tipL.backgroundColor = UIColor.brownColor()
+        tipL.font = UIFont.systemFontOfSize(17)
+        tipL.text =  "无网络连接, 请检查网络设置"
+        tipL.textAlignment = NSTextAlignment.Center
+        tipL.textColor = NavColor
+        netView.addSubview(tipL)
+        netView.addSubview(imageView)
+        self.contentView.addSubview(netView)
+        // 添加点击手势
+        netView.userInteractionEnabled = true
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(self.setNetWork))
+        netView.addGestureRecognizer(tap)
+        */
+        
+    }
+    
+    
+    // MARK: - 设置网络连接
+    func setNetWork() -> Void {
+        self.loadData()
+        //        print("应该跳转到网络设置")
+    }
+    
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -119,7 +193,9 @@ extension BaseCollectionViewCell: UITableViewDelegate, UITableViewDataSource{
         // 当点击的时候下载相对应的 json 文件
         let model = self.dataArr[indexPath.row] as! BaseModel
         let web = DetailViewController()
+        web.titleName = model.source
         web.url = model.link
+        web.model = model
         self.delegate?.showDetailView(web)
         
         
@@ -134,3 +210,61 @@ extension BaseCollectionViewCell: UITableViewDelegate, UITableViewDataSource{
     }
     
 }
+
+extension BaseCollectionViewCell{
+    // 往本地存储数据
+    func writeToDataWith(array:NSArray) -> Void {
+        print("写入的个数:\(array.count)")
+        let name = NSStringFromClass(self.dynamicType) // self Type dynamicType 三个关键字
+        // 拼接完整的沙盒路径
+        let path = String.init(format: "%@/Documents/%@.txt", NSHomeDirectory(),name)
+        print("写入path = \(path)")
+        //
+        let flag = NSKeyedArchiver.archiveRootObject(array, toFile: path)
+        if flag {
+            print("归档成功")
+        }
+    }
+    // 读本地文件
+    func readLocalData() -> NSArray? {
+        let name = NSStringFromClass(self.dynamicType)
+        let path = String.init(format: "%@/Documents/%@.txt", NSHomeDirectory(),name)
+        let array = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as? NSArray
+        return array
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

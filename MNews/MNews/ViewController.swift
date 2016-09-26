@@ -95,9 +95,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         contentView.registerClass(MovieCell.self, forCellWithReuseIdentifier: "MovieCell") //18 影视
         contentView.registerClass(SeriesCell.self, forCellWithReuseIdentifier: "SeriesCell") // 19电视剧
         contentView.registerClass(GameCell.self, forCellWithReuseIdentifier: "GameCell") //20 游戏
-        
-        
-        
         contentView.contentOffset = CGPointZero
         contentView.bounces = false
         contentView.delegate = self
@@ -105,6 +102,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.view.addSubview(contentView)
         return contentView
     }()
+    // MARK: - 页面即将显示
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.barTintColor = NavColor
+    }
+    
     
     // MARK: - 页面加载
     override func viewDidLoad() {
@@ -152,6 +154,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //MARK: - 个人中心点击事件
     func btnClick(button:UIButton) -> Void {
         let me = MeViewController()
+        me.titleName =  "个人中心"
+        
         self.navigationController?.pushViewController(me, animated: true)
     }
     override func didReceiveMemoryWarning() {
@@ -190,11 +194,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }else if indexPath.item == 4{ //5 美女
             cellID = "BeautyCell"
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! BeautyCell
+            cell.delegate = self
             return cell
             
         }else if indexPath.item == 5{ //6 教育
             cellID = "SubCell"
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! SubCell
+            cell.delegate = self
             return cell
         }else if indexPath.item == 6{ //7 CBA最新
             cellID = "FunnyCell"
@@ -311,10 +317,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
 }
-
+// MARK: - 弹出警告框 / 和 跳转页面
 extension ViewController: ShowDetail{
     func showDetailView(web:DetailViewController){
         self.navigationController?.pushViewController(web, animated: true)
+    }
+    func sentMessage(ac:UIAlertController) -> Void {
+        self.presentViewController(ac, animated: true, completion: nil)
     }
     
 }

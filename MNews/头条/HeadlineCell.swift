@@ -9,7 +9,10 @@
 import UIKit
 
 protocol ShowDetail:NSObjectProtocol {
+    // 跳转到webView
     func showDetailView(web:DetailViewController) -> Void
+    // 弹出警告框
+    func sentMessage(ac:UIAlertController) -> Void
 }
 
 class HeadlineCell: UICollectionViewCell {
@@ -54,7 +57,6 @@ class HeadlineCell: UICollectionViewCell {
         return tableView
         
     }()
-    
     // MARK: - 初始化
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,8 +65,6 @@ class HeadlineCell: UICollectionViewCell {
     }
     // MARK: - 网络加载数据
     func loadData() -> Void {
-        //        let url = "http://reader.meizu.com/android/unauth/index/latest_articles.do?articleId=122614556&supportSDK=16&putdate=1474439444000&columnIds=34_1_2_19_20_16_4_37_5_14_9_18_10_7_3&deviceType=MX4&v=2820&operator=46007&nt=wifi&vn=2.8.20&deviceinfo=VpE0Ek7u0%2B%2BdlqU%2FcanUjJ27f1Y4WsSeqm2UCIaGYVU0Pm%2BQ0EwXd4AA%2B%2BJqHfOYqEDbY556tFNcvAw2x7fg5ceJz2LUAHlGzN1l1iDvOZ6SwBIPS72t46y2BiG9Y81X4jRLrhwunhrL3fnkWEuUYkUv%2FxkYfAqSjMC1S0Wcd0c%3D&os=5.1-1469416338_stable"
-        
         let url = "http://reader.meizu.com/android/unauth/index/latest_articles.do?articleId=122708732&supportSDK=16&putdate=1474588053000&columnIds=34_1_2_19_20_16_4_37_5_14_9_18_10_7_3_25_23_15_40_41_17_24_26_29_28_30_31_32_21_6&deviceType=MX4&v=2820&operator=46007&nt=wifi&vn=2.8.20&deviceinfo=TD0FxRLgnTr%2FKSlvzaoH%2B0IWG0uV53nTTGKHI68jUHezpZyAXOHYUyswalmpjtGYug1RGYtF4K6OELXz7U5ucKlZfH9PHvV%2BYNrlMOn%2BS5nmOOq4N%2B3mEem%2Bz7HLUN7xiYxfcA7Ea2KxY4lkphp3z%2Fi%2FddTMaH61v9j61JHVqso%3D&os=5.1-1469416338_stable"
         
         HDManager.startLoading()
@@ -116,6 +116,7 @@ extension HeadlineCell:UITableViewDelegate, UITableViewDataSource{
             cell.imgView.sd_setImageWithURL(NSURL.init(string: model.imgUrlList.lastObject as! String))
         }
         cell.titleL.text = model.title
+        cell.sourceNameL.text = model.contentSourceName
         cell.contentCountL.text = "\(model.pv)" + "人看过"
         return cell
     }
@@ -128,6 +129,7 @@ extension HeadlineCell:UITableViewDelegate, UITableViewDataSource{
         // 当点击的时候下载相对应的 json 文件
         let model = self.contentArr[indexPath.row] as! ContentModel
         let web = DetailViewController()
+        web.titleName = model.contentSourceName
         web.url = PaseFile.paseFile(model.articleUrl)
         self.delegate?.showDetailView(web)
         

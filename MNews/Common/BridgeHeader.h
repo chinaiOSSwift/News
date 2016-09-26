@@ -22,4 +22,6 @@
 
 #import "HDManager.h"
 
+#import "FMDB.h"
+
 #endif /* BridgeHeader_h */
