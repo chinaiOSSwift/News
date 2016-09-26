@@ -8,9 +8,22 @@
 
 import UIKit
 
-class EnterCell: UICollectionViewCell {
+class EnterCell: BaseCollectionViewCell {
+    override init(frame: CGRect) {
+        
+        super.init(frame: frame)
+        self.channelID = "5572a10ab3cdc86cf39001eb"
+        self.contentView.backgroundColor = UIColor.whiteColor()
+        super.loadData()
+        
+    }
     
-    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+}
+/*
+ 
+ 
     // 代理指针
     weak var delegate:ShowDetail?
     //数据源
@@ -133,6 +146,7 @@ extension EnterCell: UITableViewDelegate, UITableViewDataSource{
         }
         return Content_H / 6
     }
+ */
     
 }
 

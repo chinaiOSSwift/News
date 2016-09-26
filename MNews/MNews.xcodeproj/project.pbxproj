@@ -103,6 +103,7 @@
 		BCC106BA1D93DEA300399353 /* PaseFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC106B91D93DEA300399353 /* PaseFile.swift */; };
 		BCC106BC1D93E8E100399353 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC106BB1D93E8E100399353 /* DetailViewController.swift */; };
 		BCC106BE1D93F4AB00399353 /* TitleList.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCC106BD1D93F4AB00399353 /* TitleList.plist */; };
+		BCD79C1F1D98A4F40002364A /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C1E1D98A4F40002364A /* BaseCollectionViewCell.swift */; };
 		BCF83FA11D936197000D5D60 /* BannerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF83FA01D936197000D5D60 /* BannerModels.swift */; };
 		BCF83FA31D936679000D5D60 /* BannerModelNetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF83FA21D936679000D5D60 /* BannerModelNetWork.swift */; };
 /* End PBXBuildFile section */
@@ -258,6 +259,7 @@
 		BCC106B91D93DEA300399353 /* PaseFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaseFile.swift; sourceTree = "<group>"; };
 		BCC106BB1D93E8E100399353 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BCC106BD1D93F4AB00399353 /* TitleList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TitleList.plist; sourceTree = "<group>"; };
+		BCD79C1E1D98A4F40002364A /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		BCF83FA01D936197000D5D60 /* BannerModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerModels.swift; sourceTree = "<group>"; };
 		BCF83FA21D936679000D5D60 /* BannerModelNetWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerModelNetWork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -284,6 +286,7 @@
 				BC1F632F1D9671D700DE01D8 /* BaseModelTwoCell.xib */,
 				BC1F63321D96756B00DE01D8 /* BaseModelThreeCell.swift */,
 				BC1F63331D96756B00DE01D8 /* BaseModelThreeCell.xib */,
+				BCD79C1E1D98A4F40002364A /* BaseCollectionViewCell.swift */,
 			);
 			path = BaseCell;
 			sourceTree = "<group>";
@@ -938,6 +941,7 @@
 				BC1F63491D96C43F00DE01D8 /* GameCell.swift in Sources */,
 				BCBA82C51D928BBC008D6044 /* SDWebImageCompat.m in Sources */,
 				BCC106BC1D93E8E100399353 /* DetailViewController.swift in Sources */,
+				BCD79C1F1D98A4F40002364A /* BaseCollectionViewCell.swift in Sources */,
 				BCBA82B01D928BBC008D6044 /* MJRefreshFooter.m in Sources */,
 				BCBA82B11D928BBC008D6044 /* MJRefreshHeader.m in Sources */,
 				BC9990531D95519A002BF484 /* FunnyCell.swift in Sources */,

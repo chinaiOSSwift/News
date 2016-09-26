@@ -19,6 +19,7 @@ class BaseZeroCell: UITableViewCell {
     
     @IBOutlet weak var pubDateL: UILabel!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

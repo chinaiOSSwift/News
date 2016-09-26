@@ -209,6 +209,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }else if indexPath.item == 8{ //9 互联网
             cellID = "HotCell"
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! HotCell
+            cell.delegate = self
             return cell
         }else if indexPath.item == 9{ //10 体育
             cellID = "SportCell"
@@ -263,6 +264,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }else{ //20 游戏
             cellID = "GameCell"
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! GameCell
+            print("应该执行了")
             cell.delegate = self
             return cell
         }

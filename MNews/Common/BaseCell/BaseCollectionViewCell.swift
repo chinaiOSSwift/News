@@ -1,36 +1,22 @@
 //
-//  HistoryCell.swift
+//  BaseCollectionViewCell.swift
 //  MNews
 //
-//  Created by qianfeng on 16/9/24.
+//  Created by qianfeng on 16/9/26.
 //  Copyright © 2016年 qianfeng. All rights reserved.
 //
 
 import UIKit
 
-class HistoryCell: BaseCollectionViewCell {
+class BaseCollectionViewCell: UICollectionViewCell {
     
-    
-    override init(frame: CGRect) {
-        
-        super.init(frame: frame)
-        self.channelID = "5572a109b3cdc86cf39001e4"
-        self.contentView.backgroundColor = UIColor.whiteColor()
-        super.loadData()
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    /*
     // 代理指针
     weak var delegate:ShowDetail?
     //数据源
     var dataArr = NSMutableArray()
     var page:NSInteger = 1
     var flag:Bool = false
+    var channelID:String!
     lazy var tableView:UITableView = {
         let tableView = UITableView.init(frame: CGRectMake(0, 0, Scr_W, Content_H + btnH))
         tableView.backgroundColor = UIColor.whiteColor()
@@ -68,7 +54,7 @@ class HistoryCell: BaseCollectionViewCell {
     
     //MARK: - 网络加载
     func loadData() -> Void{
-        let preArg = "channelId=5572a109b3cdc86cf39001e4&page="
+        let preArg = "channelId=\(self.channelID)&page="
         let behArg = "&needContent=0&needHtml=0"
         let httpArg = String.init(format: "%@%d%@", preArg,self.page,behArg)
         HDManager.startLoading()
@@ -78,7 +64,7 @@ class HistoryCell: BaseCollectionViewCell {
                     self.dataArr.removeAllObjects()
                 }
                 self.dataArr.addObjectsFromArray(array!)
-                print("房产最新 :\(self.dataArr.count)")
+                print("网络加载数据:\(self.dataArr.count)")
                 self.tableView.reloadData()
                 self.tableView.header.endRefreshing()
                 self.tableView.footer.endRefreshing()
@@ -94,7 +80,7 @@ class HistoryCell: BaseCollectionViewCell {
 }
 
 //MARK: - UITableView 协议方法
-extension HistoryCell: UITableViewDelegate, UITableViewDataSource{
+extension BaseCollectionViewCell: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataArr.count
@@ -146,6 +132,5 @@ extension HistoryCell: UITableViewDelegate, UITableViewDataSource{
         }
         return Content_H / 6
     }
- */
     
 }
