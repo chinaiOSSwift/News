@@ -16,6 +16,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var titleArr = [String]()
     var titleCollectionView:UICollectionView!
     var preIndex:NSInteger = 0
+    var head:UIView!
     
     lazy var contentHead:UIScrollView = {
         let path = NSBundle.mainBundle().pathForResource("TitleList", ofType: "plist")
@@ -30,6 +31,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
             button.titleLabel?.font = UIFont.systemFontOfSize(17)
             button.setTitleColor(NavColor, forState: UIControlState.Selected)
+            button.titleLabel?.adjustsFontSizeToFitWidth = true
             button.addTarget(self, action: #selector(self.buttonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             button.tag = 1000 + i
             if button.tag == 1000{
@@ -37,6 +39,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
             header.addSubview(button)
         }
+        header.tag =  1999
         header.bounces = false
         header.backgroundColor = UIColor.whiteColor()
         //设置横向滚动条隐藏
@@ -46,13 +49,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }()
     // MARK: - 标题点击事件
     func buttonClicked(button:UIButton) -> Void {
-        (self.contentHead.viewWithTag(preIndex + 1000) as! UIButton).selected = false
-        let buttonTag:NSInteger = button.tag - 1000
+        // 设置上一个
+        let preButton:UIButton = self.contentHead.viewWithTag(preIndex + 1000) as! UIButton
+        preButton.selected = false
+        preButton.titleLabel?.font = UIFont.systemFontOfSize(17)
+        // 现在的button
         button.selected = true
+        button.titleLabel?.font = UIFont.systemFontOfSize(20)
+        // 减去1000后的值
+        let buttonTag:NSInteger = button.tag - 1000
         self.preIndex = buttonTag
-        print("tag = \(button.tag); 下表: = \(buttonTag % 6); x = \(buttonTag % 6) * btnW)")
+        
+        // 当前的 (tag - offIndex ) % 6 = 当前要展示的第几列
+        let contentOffSet_X:CGFloat = (self.head.viewWithTag(1999) as! UIScrollView).contentOffset.x
+        let offIndex = round(contentOffSet_X / btnW)
+        
+        // UIView 动画
         UIView.animateWithDuration(0.25) {
-            self.sliderView.mj_x = (CGFloat(button.tag - 1000) % 6 + 1) * btnW
+            
+            self.sliderView.mj_x = ((CGFloat(buttonTag) - offIndex) % 6) * btnW
+            /*
+            self.sliderView.mj_x = (CGFloat(button.tag - 1000 ) % 6 ) * btnW
+            print("tag = \(button.tag); 下表: = \(buttonTag % 6); x = \(buttonTag % 6) * btnW)")*/
         }
         // 改变内容展示
         self.contentView.setContentOffset(CGPointMake(Scr_W * CGFloat(buttonTag), 0), animated: false)
@@ -120,7 +138,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     //MARK: - 创建头视图
     func makeHeadView() -> Void {
-        let head = UIView.init(frame: CGRectMake(0, 64, Scr_W, btnH + 3))
+        self.head = UIView.init(frame: CGRectMake(0, 64, Scr_W, btnH + 3))
         self.sliderView = UIView.init(frame: CGRectMake(0, head.mj_h - 3, btnW, 2))
         self.sliderView.backgroundColor = UIColor.blueColor()
         head.addSubview(self.sliderView)
@@ -147,6 +165,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         button.setBackgroundImage(UIImage.init(named: "me.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), forState: UIControlState.Normal)
         button.setBackgroundImage(UIImage.init(named: "me.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), forState: UIControlState.Highlighted)
         button.setBackgroundImage(UIImage.init(named: "me.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), forState: UIControlState.Selected)
+        
         button.addTarget(self, action: #selector(self.btnClick(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: button)
     }
@@ -286,36 +305,30 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return 0
     }
     
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
-        
-    }
-    
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        (self.contentHead.viewWithTag(preIndex + 1000) as! UIButton).selected = false
+        let preButton:UIButton = (self.contentHead.viewWithTag(preIndex + 1000) as! UIButton)
+        preButton.selected = false
+        preButton.titleLabel?.font = UIFont.systemFontOfSize(17)
         let currentIndex = NSInteger(scrollView.contentOffset.x / Scr_W)
-        (self.contentHead.viewWithTag(currentIndex + 1000) as! UIButton).selected = true
+        let currentButton = (self.contentHead.viewWithTag(currentIndex + 1000) as! UIButton)
+        currentButton.selected = true
+        currentButton.titleLabel?.font = UIFont.systemFontOfSize(20)
         self.preIndex = currentIndex
-        print("当前第 \(currentIndex) 界面")
-        
-        if scrollView.contentOffset.x > 6 * Scr_W{
+        if scrollView.contentOffset.x >= 6 * Scr_W{
             UIView.animateWithDuration(0.25, animations: {
                 self.contentHead.setContentOffset(CGPointMake(CGFloat(currentIndex - 5) * btnW, 0), animated: true)
             })
             
-        }else if scrollView.contentOffset.x == CGFloat(6) * Scr_W{
+        }else if scrollView.contentOffset.x <= CGFloat(6) * Scr_W{
             UIView.animateWithDuration(0.25, animations: {
                 self.contentHead.setContentOffset(CGPointMake(0, 0), animated: true)
+                self.sliderView.mj_x = CGFloat(currentIndex) * btnW
             })
             
         }
         
         
     }
-    
-    
-    
 }
 // MARK: - 弹出警告框 / 和 跳转页面
 extension ViewController: ShowDetail{

@@ -53,7 +53,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
         self.contentView.backgroundColor = UIColor.whiteColor()
         if let array = self.readLocalData(){
             self.dataArr = NSMutableArray.init(array: array)
-//            print("第一次加载数据得到的结果 : \(self.dataArr.count)")
+            //            print("第一次加载数据得到的结果 : \(self.dataArr.count)")
             self.tableView.reloadData()
         }else{
             self.loadData()
@@ -73,8 +73,11 @@ class BaseCollectionViewCell: UICollectionViewCell {
                     self.writeToDataWith(array!)
                 }
                 self.dataArr.addObjectsFromArray(array!)
+                if !self.flag{
+                    self.writeToDataWith(array!)
+                }
                 self.tableView.reloadData()
-               
+                
             }else{
                 self.setNetWorkView()
             }
@@ -87,56 +90,21 @@ class BaseCollectionViewCell: UICollectionViewCell {
     // MARK: - 无网络界面
     func setNetWorkView() -> Void {
         
-        print("121212")
         let url = NSURL.init(string: "prefs:root=Brightness")
         if UIApplication.sharedApplication().canOpenURL(url!) {
             UIApplication.sharedApplication().openURL(url!)
-            print("调用系统的设置按钮")
+
         }
         let ac = UIAlertController.init(title: "⚠️", message: "无网络连接, 请检查网络设置", preferredStyle: UIAlertControllerStyle.Alert)
         let action = UIAlertAction.init(title: "确定", style: UIAlertActionStyle.Default) { (action) in
-            
+            // 调用系统的设置界面
             let url = NSURL.init(string: "prefs:root=General")
             if UIApplication.sharedApplication().canOpenURL(url!) {
                 UIApplication.sharedApplication().openURL(url!)
-                print("调用系统的设置按钮")
             }
-            
         }
         ac.addAction(action)
         self.delegate?.sentMessage(ac)
-        
-        
-        
-        
-        
-        
-        /*
-        let netView = UIView.init(frame:CGRectMake(0, 0, Scr_W , Scr_H - btnH))
-        netView.center = self.contentView.center
-        //        netView.backgroundColor = UIColor.redColor()
-        let imageView = UIImageView.init(frame: CGRectMake(0, 0, 50, 50))
-        imageView.mj_x = netView.center.x - 25
-        imageView.mj_y = netView.center.y - 100
-        imageView.image = UIImage.init(named: "netWork.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        //        imageView.backgroundColor = UIColor.greenColor()
-        let tipL = UILabel.init(frame: CGRectMake(0, 0, 300, 23))
-        tipL.mj_x = imageView.center.x - 150
-        tipL.mj_y = imageView.mj_y + imageView.mj_h + 5
-        //        tipL.backgroundColor = UIColor.brownColor()
-        tipL.font = UIFont.systemFontOfSize(17)
-        tipL.text =  "无网络连接, 请检查网络设置"
-        tipL.textAlignment = NSTextAlignment.Center
-        tipL.textColor = NavColor
-        netView.addSubview(tipL)
-        netView.addSubview(imageView)
-        self.contentView.addSubview(netView)
-        // 添加点击手势
-        netView.userInteractionEnabled = true
-        let tap = UITapGestureRecognizer.init(target: self, action: #selector(self.setNetWork))
-        netView.addGestureRecognizer(tap)
-        */
-        
     }
     
     
@@ -214,15 +182,11 @@ extension BaseCollectionViewCell: UITableViewDelegate, UITableViewDataSource{
 extension BaseCollectionViewCell{
     // 往本地存储数据
     func writeToDataWith(array:NSArray) -> Void {
-        print("写入的个数:\(array.count)")
         let name = NSStringFromClass(self.dynamicType) // self Type dynamicType 三个关键字
         // 拼接完整的沙盒路径
         let path = String.init(format: "%@/Documents/%@.txt", NSHomeDirectory(),name)
-        print("写入path = \(path)")
-        //
         let flag = NSKeyedArchiver.archiveRootObject(array, toFile: path)
         if flag {
-            print("归档成功")
         }
     }
     // 读本地文件
