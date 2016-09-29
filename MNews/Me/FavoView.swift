@@ -25,6 +25,7 @@ class FavoView: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 50
+        
         tableView.registerNib(UINib.init(nibName: "BaseZeroCell", bundle: nil), forCellReuseIdentifier: "BaseZeroCell")
         self.view.addSubview(tableView)
     }

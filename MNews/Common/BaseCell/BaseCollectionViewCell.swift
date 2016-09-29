@@ -53,7 +53,6 @@ class BaseCollectionViewCell: UICollectionViewCell {
         self.contentView.backgroundColor = UIColor.whiteColor()
         if let array = self.readLocalData(){
             self.dataArr = NSMutableArray.init(array: array)
-            //            print("第一次加载数据得到的结果 : \(self.dataArr.count)")
             self.tableView.reloadData()
         }else{
             self.loadData()
@@ -67,7 +66,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
         let httpArg = String.init(format: "%@%d%@", preArg,self.page,behArg)
         HDManager.startLoading()
         BaseModel.requestBaseDtat(HOME_URL: HOME_URL, httpArg: httpArg) { (array, error) in
-            if error == nil{
+            if error == nil{ // 网络请求
                 if self.flag == true{
                     self.dataArr.removeAllObjects()
                     self.writeToDataWith(array!)
@@ -89,12 +88,6 @@ class BaseCollectionViewCell: UICollectionViewCell {
     
     // MARK: - 无网络界面
     func setNetWorkView() -> Void {
-        
-        let url = NSURL.init(string: "prefs:root=Brightness")
-        if UIApplication.sharedApplication().canOpenURL(url!) {
-            UIApplication.sharedApplication().openURL(url!)
-
-        }
         let ac = UIAlertController.init(title: "⚠️", message: "无网络连接, 请检查网络设置", preferredStyle: UIAlertControllerStyle.Alert)
         let action = UIAlertAction.init(title: "确定", style: UIAlertActionStyle.Default) { (action) in
             // 调用系统的设置界面
@@ -172,7 +165,7 @@ extension BaseCollectionViewCell: UITableViewDelegate, UITableViewDataSource{
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let model = self.dataArr[indexPath.row] as! BaseModel
         if model.imageurls?.count == 3 || model.imageurls?.count == 2{
-            return 180
+            return 170
         }
         return Content_H / 6
     }

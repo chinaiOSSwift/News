@@ -9,7 +9,7 @@
 import UIKit
 
 class BaseModelThreeCell: UITableViewCell {
-
+    
     @IBOutlet weak var imageView1: UIImageView!
     
     
@@ -28,9 +28,8 @@ class BaseModelThreeCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     func customCellWithModel(model:BaseModel) -> Void {
         let imageUrl1 = ((model.imageurls?.first)! as NSDictionary)["url"] as! String
         let imageUrl2 = (model.imageurls![1] as NSDictionary)["url"] as! String
@@ -46,7 +45,7 @@ class BaseModelThreeCell: UITableViewCell {
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

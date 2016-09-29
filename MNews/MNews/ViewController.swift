@@ -29,9 +29,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             button.setTitle(self.titleArr[i], forState: UIControlState.Highlighted)
             button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
             button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
-            button.titleLabel?.font = UIFont.systemFontOfSize(17)
+            button.titleLabel?.font = UIFont.systemFontOfSize(15)
             button.setTitleColor(NavColor, forState: UIControlState.Selected)
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
+//            button.titleLabel?.adjustsFontSizeToFitWidth = true
             button.addTarget(self, action: #selector(self.buttonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             button.tag = 1000 + i
             if button.tag == 1000{
@@ -52,10 +52,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // 设置上一个
         let preButton:UIButton = self.contentHead.viewWithTag(preIndex + 1000) as! UIButton
         preButton.selected = false
-        preButton.titleLabel?.font = UIFont.systemFontOfSize(17)
+        preButton.titleLabel?.font = UIFont.systemFontOfSize(15)
         // 现在的button
         button.selected = true
-        button.titleLabel?.font = UIFont.systemFontOfSize(20)
+        button.titleLabel?.font = UIFont.systemFontOfSize(17)
         // 减去1000后的值
         let buttonTag:NSInteger = button.tag - 1000
         self.preIndex = buttonTag
@@ -114,6 +114,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         contentView.registerClass(SeriesCell.self, forCellWithReuseIdentifier: "SeriesCell") // 19电视剧
         contentView.registerClass(GameCell.self, forCellWithReuseIdentifier: "GameCell") //20 游戏
         contentView.contentOffset = CGPointZero
+        contentView.backgroundColor = UIColor.whiteColor()
         contentView.bounces = false
         contentView.delegate = self
         contentView.dataSource = self
@@ -306,13 +307,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+//        // 当前的 (tag - offIndex ) % 6 = 当前要展示的第几列
+//        let contentOffSet_X:CGFloat = (self.head.viewWithTag(1999) as! UIScrollView).contentOffset.x
+//        let offIndex = round(contentOffSet_X / btnW)
+//        self.sliderView.mj_x = ((CGFloat(self.preIndex + 1) - offIndex) % 6) * btnW
+        
         let preButton:UIButton = (self.contentHead.viewWithTag(preIndex + 1000) as! UIButton)
         preButton.selected = false
-        preButton.titleLabel?.font = UIFont.systemFontOfSize(17)
+        preButton.titleLabel?.font = UIFont.systemFontOfSize(15)
         let currentIndex = NSInteger(scrollView.contentOffset.x / Scr_W)
         let currentButton = (self.contentHead.viewWithTag(currentIndex + 1000) as! UIButton)
         currentButton.selected = true
-        currentButton.titleLabel?.font = UIFont.systemFontOfSize(20)
+        currentButton.titleLabel?.font = UIFont.systemFontOfSize(17)
+        
         self.preIndex = currentIndex
         if scrollView.contentOffset.x >= 6 * Scr_W{
             UIView.animateWithDuration(0.25, animations: {
@@ -326,8 +333,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             })
             
         }
-        
-        
     }
 }
 // MARK: - 弹出警告框 / 和 跳转页面

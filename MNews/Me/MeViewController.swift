@@ -66,6 +66,7 @@ class MeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.bounces = false
+        tableView.separatorColor = UIColor.clearColor()
         self.view.addSubview(tableView)
         
     }
