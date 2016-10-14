@@ -290,7 +290,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }else{ //20 游戏
             cellID = "GameCell"
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! GameCell
-            print("应该执行了")
+            
             cell.delegate = self
             return cell
         }

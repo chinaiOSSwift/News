@@ -78,7 +78,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
                 self.tableView.reloadData()
                 
             }else{
-                self.setNetWorkView()
+//                self.setNetWorkView()
             }
             self.tableView.header.endRefreshing()
             self.tableView.footer.endRefreshing()

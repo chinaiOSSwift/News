@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="TestCell" customModule="MNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="149"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MD0-X1-8Sx">
+                        <rect key="frame" x="8" y="8" width="96" height="133"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9KE-OA-Rnc">
+                        <rect key="frame" x="112" y="8" width="96" height="133"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="goX-P0-yms">
+                        <rect key="frame" x="216" y="8" width="96" height="133"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="goX-P0-yms" secondAttribute="trailing" constant="8" id="0BF-2B-GJM"/>
+                    <constraint firstItem="9KE-OA-Rnc" firstAttribute="leading" secondItem="MD0-X1-8Sx" secondAttribute="trailing" constant="8" id="1ni-4a-ETv"/>
+                    <constraint firstItem="9KE-OA-Rnc" firstAttribute="width" secondItem="MD0-X1-8Sx" secondAttribute="width" id="5QZ-VN-tRe"/>
+                    <constraint firstItem="goX-P0-yms" firstAttribute="width" secondItem="MD0-X1-8Sx" secondAttribute="width" id="5Xg-f5-7mN"/>
+                    <constraint firstItem="9KE-OA-Rnc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="6P1-NX-KN0"/>
+                    <constraint firstAttribute="bottom" secondItem="goX-P0-yms" secondAttribute="bottom" constant="8" id="Ad9-pa-4P9"/>
+                    <constraint firstAttribute="bottom" secondItem="9KE-OA-Rnc" secondAttribute="bottom" constant="8" id="NfQ-8l-kFR"/>
+                    <constraint firstItem="goX-P0-yms" firstAttribute="leading" secondItem="9KE-OA-Rnc" secondAttribute="trailing" constant="8" id="RJi-R6-gWQ"/>
+                    <constraint firstItem="MD0-X1-8Sx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="VGR-K6-39F"/>
+                    <constraint firstItem="MD0-X1-8Sx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="fL4-TS-unV"/>
+                    <constraint firstAttribute="bottom" secondItem="MD0-X1-8Sx" secondAttribute="bottom" constant="8" id="g7q-EI-N16"/>
+                    <constraint firstItem="9KE-OA-Rnc" firstAttribute="height" secondItem="MD0-X1-8Sx" secondAttribute="height" id="gTs-Ex-hbF"/>
+                    <constraint firstItem="9KE-OA-Rnc" firstAttribute="leading" secondItem="MD0-X1-8Sx" secondAttribute="trailing" constant="8" id="i05-4l-spJ"/>
+                    <constraint firstItem="goX-P0-yms" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="rf8-nC-QFF"/>
+                    <constraint firstItem="goX-P0-yms" firstAttribute="height" secondItem="MD0-X1-8Sx" secondAttribute="height" id="ygf-pl-gCu"/>
+                    <constraint firstItem="goX-P0-yms" firstAttribute="leading" secondItem="9KE-OA-Rnc" secondAttribute="trailing" constant="8" id="zv1-dp-u4Q"/>
+                </constraints>
+            </tableViewCellContentView>
+        </tableViewCell>
+    </objects>
+</document>

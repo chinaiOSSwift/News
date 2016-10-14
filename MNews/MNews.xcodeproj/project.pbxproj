@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC08D39A1DB06AF4004FAEDF /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08D3981DB06AF4004FAEDF /* TestCell.swift */; };
+		BC08D39B1DB06AF4004FAEDF /* TestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC08D3991DB06AF4004FAEDF /* TestCell.xib */; };
 		BC1F63121D96488F00DE01D8 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F63111D96488F00DE01D8 /* BaseCell.swift */; };
 		BC1F63221D9668BD00DE01D8 /* BaseZeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F63201D9668BD00DE01D8 /* BaseZeroCell.swift */; };
 		BC1F63231D9668BD00DE01D8 /* BaseZeroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1F63211D9668BD00DE01D8 /* BaseZeroCell.xib */; };
@@ -125,6 +127,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC08D3981DB06AF4004FAEDF /* TestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
+		BC08D3991DB06AF4004FAEDF /* TestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCell.xib; sourceTree = "<group>"; };
 		BC1F63111D96488F00DE01D8 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		BC1F63201D9668BD00DE01D8 /* BaseZeroCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseZeroCell.swift; sourceTree = "<group>"; };
 		BC1F63211D9668BD00DE01D8 /* BaseZeroCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseZeroCell.xib; sourceTree = "<group>"; };
@@ -326,6 +330,8 @@
 				BC1F632F1D9671D700DE01D8 /* BaseModelTwoCell.xib */,
 				BC1F63321D96756B00DE01D8 /* BaseModelThreeCell.swift */,
 				BC1F63331D96756B00DE01D8 /* BaseModelThreeCell.xib */,
+				BC08D3981DB06AF4004FAEDF /* TestCell.swift */,
+				BC08D3991DB06AF4004FAEDF /* TestCell.xib */,
 				BCD79C1E1D98A4F40002364A /* BaseCollectionViewCell.swift */,
 				BCD79C4B1D994BC50002364A /* MeCell.swift */,
 				BCD79C4C1D994BC50002364A /* MeCell.xib */,
@@ -937,6 +943,7 @@
 				BCBA82BB1D928BBC008D6044 /* MJRefresh.bundle in Resources */,
 				BCD79C501D9962190002364A /* no_favo.png in Resources */,
 				BCD79C441D994B780002364A /* favo.png in Resources */,
+				BC08D39B1DB06AF4004FAEDF /* TestCell.xib in Resources */,
 				BCD79C4A1D994B900002364A /* set.png in Resources */,
 				BCD79C231D9924360002364A /* goBack.png in Resources */,
 				BCD79C461D994B7D0002364A /* favo@2x.png in Resources */,
@@ -986,6 +993,7 @@
 				BC1F63411D96C24400DE01D8 /* SexesCell.swift in Sources */,
 				BCBA82B91D928BBC008D6044 /* MJRefreshNormalHeader.m in Sources */,
 				BC99904F1D955137002BF484 /* BeautyCell.swift in Sources */,
+				BC08D39A1DB06AF4004FAEDF /* TestCell.swift in Sources */,
 				BCBA82C41D928BBC008D6044 /* SDImageCache.m in Sources */,
 				BCD79C321D993CEE0002364A /* FMDatabase.m in Sources */,
 				BCBA820F1D927F27008D6044 /* ViewController.swift in Sources */,
@@ -1113,7 +1121,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "be02a33c-46bd-473d-a585-400baa915f01";
+				PROVISIONING_PROFILE = "3775db05-0282-46ae-895c-0ac63ccef9df";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "${SRCOOT}/Common/BridgeHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1154,7 +1162,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "be02a33c-46bd-473d-a585-400baa915f01";
+				PROVISIONING_PROFILE = "3775db05-0282-46ae-895c-0ac63ccef9df";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "${SRCOOT}/Common/BridgeHeader.h";
 				VALIDATE_PRODUCT = YES;
@@ -1165,14 +1173,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: jianguo Zeng (YLW484W6S9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jianguo Zeng (YLW484W6S9)";
 				INFOPLIST_FILE = MNews/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.YYMNews.BJHL;
+				PRODUCT_BUNDLE_IDENTIFIER = com.newsfirst.bj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3775db05-0282-46ae-895c-0ac63ccef9df";
 				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/Common/BridgeHeader.h";
 			};
 			name = Debug;
@@ -1181,14 +1189,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: jianguo Zeng (YLW484W6S9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jianguo Zeng (YLW484W6S9)";
 				INFOPLIST_FILE = MNews/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.YYMNews.BJHL;
+				PRODUCT_BUNDLE_IDENTIFIER = com.newsfirst.bj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3775db05-0282-46ae-895c-0ac63ccef9df";
 				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/Common/BridgeHeader.h";
 			};
 			name = Release;
